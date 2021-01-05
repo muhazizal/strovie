@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    <navbar-app />
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -10,12 +11,18 @@
 import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
 
+import NavbarApp from "@/components/Navbar.vue";
+
 export default {
   name: "App",
 
   data: () => ({
-    popular: null,
+    //
   }),
+
+  components: {
+    "navbar-app": NavbarApp,
+  },
 
   mounted() {
     axios
@@ -29,3 +36,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+#app {
+  font-family: "Montserrat", sans-serif;
+}
+</style>

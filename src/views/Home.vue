@@ -9,3 +9,9 @@ export default {
   name: "Home",
 };
 </script>
+
+<style lang="scss" scoped>
+h1 {
+  margin-top: 1000px;
+}
+</style>
