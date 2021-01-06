@@ -4,16 +4,38 @@
       <v-container class="d-flex align-center">
         <v-app-bar-nav-icon @click="drawer = true" class="d-md-none"></v-app-bar-nav-icon>
 
-        <v-toolbar-title class="pl-md-0">Strovie</v-toolbar-title>
+        <router-link to="/" class="text-decoration-none white--text">
+          <v-toolbar-title class="pl-md-0">Strovie</v-toolbar-title>
+        </router-link>
 
         <v-spacer></v-spacer>
 
-        <router-link to="/movies" class="text-decoration-none">
-          Movies
-        </router-link>
+        <v-menu offset-y open-on-hover>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on">
+              Movies
+            </v-btn>
+          </template>
+          <v-list nav dense dark>
+            <router-link
+              v-for="(movie, i) in movies"
+              :key="i"
+              :to="movie.destination"
+              class="text-decoration-none white--text"
+            >
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title v-text="movie.category"> </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </router-link>
+          </v-list>
+        </v-menu>
 
-        <router-link to="/favorite" class="text-decoration-none ml-md-3">
-          Favorite
+        <router-link to="/favorites" class="text-decoration-none">
+          <v-btn>
+            Favorites
+          </v-btn>
         </router-link>
       </v-container>
     </v-app-bar>
@@ -45,6 +67,12 @@ export default {
   data: () => ({
     drawer: false,
     group: null,
+    movies: [
+      { category: "Popular", destination: "/popular" },
+      { category: "Now Playing", destination: "/now-playing" },
+      { category: "Upcoming", destination: "/upcoming" },
+      { category: "Top Rated", destination: "/top-rated" },
+    ],
   }),
 };
 </script>
@@ -54,24 +82,15 @@ header {
   .v-btn {
     box-shadow: none;
   }
+}
 
-  a {
+.v-list {
+  &-item {
     color: #fff;
-    padding: 0.5rem 0.75rem;
-    border-radius: 0.313rem;
     transition: all 0.15s;
 
     &:hover {
       background-color: rgba($color: #fff, $alpha: 0.1);
-    }
-
-    &:active {
-      background-color: inherit;
-      transition: 0ms;
-    }
-
-    &.router-link-active {
-      color: $primary;
     }
   }
 }
