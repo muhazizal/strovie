@@ -54,7 +54,7 @@
             :to="movie.destination"
             class="text-decoration-none white--text"
           >
-            <v-list-item>
+            <v-list-item @click="drawer = false">
               <v-list-item-content>
                 <v-list-item-title v-text="movie.category"> </v-list-item-title>
               </v-list-item-content>
@@ -63,7 +63,7 @@
         </v-list>
       </v-menu>
       <router-link to="/favorites" class="text-decoration-none">
-        <v-btn class="ml-4 mt-4">
+        <v-btn class="ml-4 mt-4" @click="drawer = false">
           Favorites
         </v-btn>
       </router-link>
@@ -73,6 +73,8 @@
 
 <script>
 export default {
+  name: "Navbar",
+
   data: () => ({
     drawer: false,
     movies: [
@@ -80,17 +82,6 @@ export default {
       { category: "Now Playing", destination: "/now-playing" },
       { category: "Upcoming", destination: "/upcoming" },
       { category: "Top Rated", destination: "/top-rated" },
-    ],
-    items: [
-      {
-        id: 1,
-        name: "Applications :",
-        children: [
-          { id: 2, name: "Calendar : app" },
-          { id: 3, name: "Chrome : app" },
-          { id: 4, name: "Webstorm : app" },
-        ],
-      },
     ],
   }),
 };
@@ -114,10 +105,6 @@ header {
   }
 }
 
-.v-menu__content {
-  top: 62px !important;
-}
-
 aside {
   .v-btn {
     background-color: #363636 !important;
@@ -127,8 +114,7 @@ aside {
 
 @media screen and (max-width: 600px) {
   .v-menu__content {
-    top: 16px !important;
-    left: 125px !important;
+    top: 1rem !important;
   }
 }
 </style>

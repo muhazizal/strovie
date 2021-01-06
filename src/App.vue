@@ -1,8 +1,10 @@
 <template>
   <v-app>
-    <navbar-app />
+    <NavbarApp />
     <v-main>
-      <router-view></router-view>
+      <v-container class="py-0">
+        <router-view></router-view>
+      </v-container>
     </v-main>
   </v-app>
 </template>
@@ -21,7 +23,7 @@ export default {
   }),
 
   components: {
-    "navbar-app": NavbarApp,
+    NavbarApp,
   },
 
   mounted() {
@@ -40,5 +42,10 @@ export default {
 <style lang="scss" scoped>
 #app {
   font-family: "Montserrat", sans-serif;
+}
+
+.v-main {
+  background-color: #272727;
+  color: #fff;
 }
 </style>

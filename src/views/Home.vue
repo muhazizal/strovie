@@ -1,17 +1,17 @@
 <template>
-  <div class="home">
-    <h1>This is Home Page</h1>
-  </div>
+  <HomeJumbotron />
 </template>
 
 <script>
+import HomeJumbotron from "@/components/Home/HomeJumbotron.vue";
+
 export default {
   name: "Home",
+
+  components: {
+    HomeJumbotron,
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-h1 {
-  margin-top: 1000px;
-}
-</style>
+<style lang="scss" scoped></style>
