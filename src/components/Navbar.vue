@@ -1,18 +1,18 @@
 <template>
   <div>
     <v-app-bar fixed dark>
-      <v-container class="d-flex align-center">
-        <v-app-bar-nav-icon @click="drawer = true" class="d-md-none"></v-app-bar-nav-icon>
-
+      <v-container class="d-flex align-center pa-0 pa-sm-3">
         <router-link to="/" class="text-decoration-none white--text">
           <v-toolbar-title class="pl-md-0">Strovie</v-toolbar-title>
         </router-link>
 
         <v-spacer></v-spacer>
 
+        <v-app-bar-nav-icon @click="drawer = true" class="d-md-none"></v-app-bar-nav-icon>
+
         <v-menu offset-y open-on-hover>
           <template v-slot:activator="{ on, attrs }">
-            <v-btn v-bind="attrs" v-on="on">
+            <v-btn v-bind="attrs" v-on="on" class="d-none d-md-inline-flex">
               Movies
             </v-btn>
           </template>
@@ -32,7 +32,7 @@
           </v-list>
         </v-menu>
 
-        <router-link to="/favorites" class="text-decoration-none">
+        <router-link to="/favorites" class="text-decoration-none d-none d-md-inline-flex">
           <v-btn>
             Favorites
           </v-btn>
@@ -40,24 +40,33 @@
       </v-container>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary>
-      <v-list nav dense>
-        <v-list-item-group v-model="group" active-class="deep-purple--text text--accent-4">
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
-          </v-list-item>
-
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Account</v-list-item-title>
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
+    <v-navigation-drawer v-model="drawer" absolute temporary dark>
+      <v-menu offset-x id="drawer-menu">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on" class="ml-4 mt-4 d-block">
+            Movies
+          </v-btn>
+        </template>
+        <v-list nav dense dark>
+          <router-link
+            v-for="(movie, i) in movies"
+            :key="i"
+            :to="movie.destination"
+            class="text-decoration-none white--text"
+          >
+            <v-list-item>
+              <v-list-item-content>
+                <v-list-item-title v-text="movie.category"> </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </router-link>
+        </v-list>
+      </v-menu>
+      <router-link to="/favorites" class="text-decoration-none">
+        <v-btn class="ml-4 mt-4">
+          Favorites
+        </v-btn>
+      </router-link>
     </v-navigation-drawer>
   </div>
 </template>
@@ -66,12 +75,22 @@
 export default {
   data: () => ({
     drawer: false,
-    group: null,
     movies: [
       { category: "Popular", destination: "/popular" },
       { category: "Now Playing", destination: "/now-playing" },
       { category: "Upcoming", destination: "/upcoming" },
       { category: "Top Rated", destination: "/top-rated" },
+    ],
+    items: [
+      {
+        id: 1,
+        name: "Applications :",
+        children: [
+          { id: 2, name: "Calendar : app" },
+          { id: 3, name: "Chrome : app" },
+          { id: 4, name: "Webstorm : app" },
+        ],
+      },
     ],
   }),
 };
@@ -92,6 +111,24 @@ header {
     &:hover {
       background-color: rgba($color: #fff, $alpha: 0.1);
     }
+  }
+}
+
+.v-menu__content {
+  top: 62px !important;
+}
+
+aside {
+  .v-btn {
+    background-color: #363636 !important;
+    box-shadow: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .v-menu__content {
+    top: 16px !important;
+    left: 125px !important;
   }
 }
 </style>
