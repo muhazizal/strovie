@@ -3,20 +3,23 @@
     <h1>Welcome to Strovie.</h1>
     <p class="mb-10">Discover millions of movies.</p>
 
-    <form>
+    <form class="d-flex justify-center">
       <v-text-field
         dark
         v-model="movie"
         id="movie"
         name="movie"
-        label="Search your favorite movie"
+        label="Search movie"
         required
         outlined
         color="accent"
+        type="search"
+        @keydown.enter.prevent="searchMovies"
         :error-messages="movieErrors"
         @input="$v.movie.$touch()"
         @blur="$v.movie.$touch()"
       ></v-text-field>
+      <v-btn type="submit" id="searchMovieBtn" @click="searchMovies" color="primary" large>Search</v-btn>
     </form>
   </div>
 </template>
@@ -48,6 +51,26 @@ export default {
       return errors;
     },
   },
+
+  methods: {
+    searchMovies() {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+        console.log("Error sumbit");
+      } else {
+        const movie = this.movie;
+        console.log(movie);
+        this.$store.dispatch("searchMovies", movie);
+      }
+    },
+  },
+
+  mounted() {
+    const searchMovieBtn = document.querySelector("#searchMovieBtn");
+    searchMovieBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+    });
+  },
 };
 </script>
 
@@ -59,6 +82,17 @@ export default {
   h1 {
     line-height: 2.5rem;
     margin-bottom: 0.75rem;
+  }
+
+  form {
+    .v-text-field {
+      max-width: 31.25rem;
+      margin-right: 0.75rem;
+    }
+
+    .v-btn {
+      height: 56px;
+    }
   }
 }
 </style>
