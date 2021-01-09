@@ -11,9 +11,6 @@
 </template>
 
 <script>
-import axios from "@/assets/global/axios-config.js";
-import API_ENDPOINT from "@/assets/global/api-endpoint.js";
-
 import TheNavigation from "@/components/TheNavigation.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
@@ -28,17 +25,6 @@ export default {
     TheNavigation,
     TheFooter,
   },
-
-  mounted() {
-    axios
-      .get(`${API_ENDPOINT.GET_POPULAR}`)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
 };
 </script>
 
@@ -48,7 +34,7 @@ export default {
 }
 
 .v-main {
-  min-height: calc(100vh - 9.125rem);
-  margin-top: 3.5rem;
+  min-height: calc(100vh - 9.625rem);
+  margin-top: 4rem;
 }
 </style>
