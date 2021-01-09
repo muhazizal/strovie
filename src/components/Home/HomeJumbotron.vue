@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .jumbotron {
-  height: calc(100vh - 9.125rem);
+  min-height: calc(100vh - 9.125rem);
 
   h1 {
     line-height: 2.5rem;

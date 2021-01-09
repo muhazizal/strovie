@@ -1,20 +1,20 @@
 <template>
   <form class="d-flex justify-center" @submit.prevent>
-    <v-text-field
-      dark
-      v-model="movie"
-      id="movie"
-      name="movie"
-      label="Search movie"
-      required
-      outlined
-      color="accent"
-      type="search"
-      @keydown.enter.prevent="searchMovies"
-      :error-messages="movieErrors"
-      @input="$v.movie.$touch()"
-      @blur="$v.movie.$touch()"
-    ></v-text-field>
+    <v-theme-provider root>
+      <v-text-field
+        v-model="movie"
+        id="movie"
+        name="movie"
+        label="Search movie"
+        required
+        outlined
+        type="search"
+        @keydown.enter.prevent="searchMovies"
+        :error-messages="movieErrors"
+        @input="$v.movie.$touch()"
+        @blur="$v.movie.$touch()"
+      ></v-text-field>
+    </v-theme-provider>
     <v-btn type="submit" @keypress.enter.prevent="searchMovies" @click.prevent="searchMovies" color="primary" large
       >Search</v-btn
     >

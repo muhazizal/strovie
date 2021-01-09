@@ -48,9 +48,7 @@ export default {
 }
 
 .v-main {
-  background-color: #272727;
-  color: #fff;
-  height: calc(100vh - 9.125rem);
+  min-height: calc(100vh - 9.125rem);
   margin-top: 3.5rem;
 }
 </style>

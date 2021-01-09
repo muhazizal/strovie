@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-app-bar fixed dark elevate-on-scroll>
+    <v-app-bar fixed elevate-on-scroll>
       <v-container class="d-flex align-center pa-0 pa-sm-3">
-        <router-link to="/" class="text-decoration-none white--text">
+        <router-link to="/" class="text-decoration-none">
           <v-toolbar-title class="pl-md-0">Strovie</v-toolbar-title>
         </router-link>
 
@@ -16,7 +16,7 @@
               Movies
             </v-btn>
           </template>
-          <v-list nav dense dark>
+          <v-list nav dense>
             <router-link v-for="(movie, i) in movies" :key="i" :to="movie.destination" class="text-decoration-none">
               <v-list-item>
                 <v-list-item-content>
@@ -32,17 +32,19 @@
             Favorites
           </v-btn>
         </router-link>
+
+        <v-switch v-model="$vuetify.theme.dark" inset hide-details class="ml-3"></v-switch>
       </v-container>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" absolute temporary dark>
+    <v-navigation-drawer v-model="drawer" absolute temporary>
       <v-menu offset-x>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" class="ml-4 mt-4 d-block">
             Movies
           </v-btn>
         </template>
-        <v-list nav dense dark>
+        <v-list nav dense>
           <router-link v-for="(movie, i) in movies" :key="i" :to="movie.destination" class="text-decoration-none">
             <v-list-item @click="drawer = false">
               <v-list-item-content>
@@ -79,40 +81,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.router-link-active .v-btn,
-.router-link-active .v-list-item__title {
-  color: $primary;
+.router-link-active .v-btn.theme--dark,
+.router-link-active .theme--dark.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+  color: $primary-dark !important;
+}
+
+.router-link-active .v-btn.theme--light,
+.router-link-active .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+  color: $primary-light !important;
+}
+
+.v-btn {
+  box-shadow: none;
 }
 
 header {
-  .v-btn {
-    box-shadow: none;
-  }
-
   .v-toolbar__title {
     padding: 0.813rem 0;
-  }
-
-  .router-link-active .v-btn {
-    color: $primary;
-  }
-}
-
-.v-list {
-  &-item {
-    color: #fff;
-    transition: all 0.15s;
-
-    &:hover {
-      background-color: rgba($color: #fff, $alpha: 0.1);
-    }
-  }
-}
-
-aside {
-  .v-btn {
-    background-color: #363636 !important;
-    box-shadow: none;
   }
 }
 
