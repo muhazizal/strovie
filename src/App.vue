@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <NavbarApp />
+    <TheNavbar />
     <v-main>
       <v-container class="py-0">
         <router-view></router-view>
@@ -13,7 +13,7 @@
 import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
 
-import NavbarApp from "@/components/Navbar.vue";
+import TheNavbar from "@/components/TheNavbar.vue";
 
 export default {
   name: "App",
@@ -23,7 +23,7 @@ export default {
   }),
 
   components: {
-    NavbarApp,
+    TheNavbar,
   },
 
   mounted() {

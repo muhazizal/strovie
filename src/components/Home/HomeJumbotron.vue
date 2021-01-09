@@ -61,7 +61,7 @@ export default {
         console.log("Error sumbit");
       } else {
         const movie = this.movie;
-        this.$store.dispatch("searchMovies", movie);
+        this.$store.dispatch("movies/searchMovies", movie);
       }
     },
   },

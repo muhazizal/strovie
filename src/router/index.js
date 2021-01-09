@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from "../views/Home.vue";
-// const SearchResult = () => import("../views/SearchResult.vue");
+// const SearchResult = () => import("../views/Search.vue");
 
 Vue.use(VueRouter);
 
@@ -13,9 +13,9 @@ const routes = [
     component: Home,
   },
   // {
-  //   path: "/search-result",
-  //   name: "SearchResult",
-  //   component: SearchResult,
+  //   path: "/search",
+  //   name: "Search",
+  //   component: Search,
   // },
 ];
 
