@@ -3,7 +3,7 @@
     <h1>Welcome to Strovie.</h1>
     <p class="mb-10">Discover millions of movies.</p>
 
-    <form class="d-flex justify-center">
+    <form class="d-flex justify-center" @submit.prevent>
       <v-text-field
         dark
         v-model="movie"
@@ -19,7 +19,9 @@
         @input="$v.movie.$touch()"
         @blur="$v.movie.$touch()"
       ></v-text-field>
-      <v-btn type="submit" id="searchMovieBtn" @click="searchMovies" color="primary" large>Search</v-btn>
+      <v-btn type="submit" @keypress.enter.prevent="searchMovies" @click.prevent="searchMovies" color="primary" large
+        >Search</v-btn
+      >
     </form>
   </div>
 </template>
@@ -59,17 +61,9 @@ export default {
         console.log("Error sumbit");
       } else {
         const movie = this.movie;
-        console.log(movie);
         this.$store.dispatch("searchMovies", movie);
       }
     },
-  },
-
-  mounted() {
-    const searchMovieBtn = document.querySelector("#searchMovieBtn");
-    searchMovieBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-    });
   },
 };
 </script>
