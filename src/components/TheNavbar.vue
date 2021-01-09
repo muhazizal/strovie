@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar fixed dark>
+    <v-app-bar fixed dark elevate-on-scroll>
       <v-container class="d-flex align-center pa-0 pa-sm-3">
         <router-link to="/" class="text-decoration-none white--text">
           <v-toolbar-title class="pl-md-0">Strovie</v-toolbar-title>
@@ -17,12 +17,7 @@
             </v-btn>
           </template>
           <v-list nav dense dark>
-            <router-link
-              v-for="(movie, i) in movies"
-              :key="i"
-              :to="movie.destination"
-              class="text-decoration-none white--text"
-            >
+            <router-link v-for="(movie, i) in movies" :key="i" :to="movie.destination" class="text-decoration-none">
               <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title v-text="movie.category"> </v-list-item-title>
@@ -33,7 +28,7 @@
         </v-menu>
 
         <router-link to="/favorites" class="text-decoration-none d-none d-md-inline-flex">
-          <v-btn>
+          <v-btn active-class="">
             Favorites
           </v-btn>
         </router-link>
@@ -48,12 +43,7 @@
           </v-btn>
         </template>
         <v-list nav dense dark>
-          <router-link
-            v-for="(movie, i) in movies"
-            :key="i"
-            :to="movie.destination"
-            class="text-decoration-none white--text"
-          >
+          <router-link v-for="(movie, i) in movies" :key="i" :to="movie.destination" class="text-decoration-none">
             <v-list-item @click="drawer = false">
               <v-list-item-content>
                 <v-list-item-title v-text="movie.category"> </v-list-item-title>
@@ -62,6 +52,7 @@
           </router-link>
         </v-list>
       </v-menu>
+
       <router-link to="/favorites" class="text-decoration-none">
         <v-btn class="ml-4 mt-4" @click="drawer = false">
           Favorites
@@ -88,9 +79,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.router-link-active .v-btn,
+.router-link-active .v-list-item__title {
+  color: $primary;
+}
+
 header {
   .v-btn {
     box-shadow: none;
+  }
+
+  .v-toolbar__title {
+    padding: 0.813rem 0;
+  }
+
+  .router-link-active .v-btn {
+    color: $primary;
   }
 }
 

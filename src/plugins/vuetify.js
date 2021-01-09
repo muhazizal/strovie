@@ -12,6 +12,13 @@ export default new Vuetify({
         accent: "#ffffff",
         error: "#cf6679",
       },
+
+      dark: {
+        primary: "#6200ee",
+        secondary: "#03dac6",
+        accent: "#ffffff",
+        error: "#b00020",
+      },
     },
   },
 });
