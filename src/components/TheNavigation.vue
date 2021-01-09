@@ -36,7 +36,7 @@
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" absolute temporary dark>
-      <v-menu offset-x id="drawer-menu">
+      <v-menu offset-x>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" class="ml-4 mt-4 d-block">
             Movies

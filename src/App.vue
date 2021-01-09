@@ -1,11 +1,12 @@
 <template>
   <v-app>
-    <TheNavbar />
+    <TheNavigation />
     <v-main>
       <v-container class="py-0">
         <router-view></router-view>
       </v-container>
     </v-main>
+    <TheFooter />
   </v-app>
 </template>
 
@@ -13,7 +14,8 @@
 import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
 
-import TheNavbar from "@/components/TheNavbar.vue";
+import TheNavigation from "@/components/TheNavigation.vue";
+import TheFooter from "@/components/TheFooter.vue";
 
 export default {
   name: "App",
@@ -23,7 +25,8 @@ export default {
   }),
 
   components: {
-    TheNavbar,
+    TheNavigation,
+    TheFooter,
   },
 
   mounted() {
@@ -47,5 +50,7 @@ export default {
 .v-main {
   background-color: #272727;
   color: #fff;
+  height: calc(100vh - 9.125rem);
+  margin-top: 3.5rem;
 }
 </style>

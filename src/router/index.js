@@ -1,8 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Home from "../views/Home.vue";
-// const SearchResult = () => import("../views/Search.vue");
+import Home from "@/views/Home.vue";
 
 Vue.use(VueRouter);
 
@@ -12,11 +11,11 @@ const routes = [
     name: "Home",
     component: Home,
   },
-  // {
-  //   path: "/search",
-  //   name: "Search",
-  //   component: Search,
-  // },
+  {
+    path: "/popular",
+    name: "Popular",
+    component: () => import(/* webpackChunkName: "movies" */ "@/views/Popular.vue"),
+  },
 ];
 
 const router = new VueRouter({
