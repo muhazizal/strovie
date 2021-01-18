@@ -2,18 +2,18 @@
   <div class="jumbotron d-flex flex-column justify-center text-center">
     <h1>Welcome to Strovie.</h1>
     <p class="mb-10">Discover millions of movies.</p>
-    <HomeJumbotronForm />
+    <JumbotronForm />
   </div>
 </template>
 
 <script>
-import HomeJumbotronForm from "./HomeJumbotronForm";
+import JumbotronForm from "./JumbotronForm";
 
 export default {
-  name: "HomeJumbotron",
+  name: "Jumbotron",
 
   components: {
-    HomeJumbotronForm,
+    JumbotronForm,
   },
 };
 </script>

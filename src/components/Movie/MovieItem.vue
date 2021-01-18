@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: "PopularMovieItem",
+  name: "MovieItem",
 
   props: {
     movie: Object,

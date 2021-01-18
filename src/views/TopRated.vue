@@ -1,6 +1,6 @@
 <template>
-  <div class="popular">
-    <h2 class="my-5">Popular Movies</h2>
+  <div class="top-rated">
+    <h2 class="my-5">Top Rated Movies</h2>
     <v-row>
       <v-col class="col-md-2"> </v-col>
       <MovieList :movies="movies" />
@@ -12,7 +12,7 @@
 import MovieList from "@/components/Movie/MovieList";
 
 export default {
-  name: "Popular",
+  name: "TopRated",
 
   components: {
     MovieList,
@@ -20,18 +20,18 @@ export default {
 
   computed: {
     movies() {
-      return this.$store.getters["movies/getPopularMovies"];
+      return this.$store.getters["movies/getTopRatedMovies"];
     },
   },
 
   created() {
-    this.$store.dispatch("movies/popularMovies");
+    this.$store.dispatch("movies/topRatedMovies");
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.popular {
+.top-rated {
   min-height: calc(100vh - 9.625rem);
 }
 </style>

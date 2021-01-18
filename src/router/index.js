@@ -16,6 +16,21 @@ const routes = [
     name: "Popular",
     component: () => import(/* webpackChunkName: "movies" */ "@/views/Popular.vue"),
   },
+  {
+    path: "/now-playing",
+    name: "NowPlaying",
+    component: () => import(/* webpackChunkName: "movies" */ "@/views/NowPlaying.vue"),
+  },
+  {
+    path: "/upcoming",
+    name: "Upcoming",
+    component: () => import(/* webpackChunkName: "movies" */ "@/views/Upcoming.vue"),
+  },
+  {
+    path: "/top-rated",
+    name: "TopRated",
+    component: () => import(/* webpackChunkName: "movies" */ "@/views/TopRated.vue"),
+  },
 ];
 
 const router = new VueRouter({

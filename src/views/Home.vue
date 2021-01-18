@@ -1,15 +1,15 @@
 <template>
-  <HomeJumbotron />
+  <Jumbotron />
 </template>
 
 <script>
-import HomeJumbotron from "@/components/Home/HomeJumbotron.vue";
+import Jumbotron from "@/components/Jumbotron/Jumbotron.vue";
 
 export default {
   name: "Home",
 
   components: {
-    HomeJumbotron,
+    Jumbotron,
   },
 };
 </script>

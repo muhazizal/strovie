@@ -1,6 +1,7 @@
 <template>
-  <div class="popular">
-    <h2 class="my-5">Popular Movies</h2>
+  <div class="upcoming">
+    <h2 class="mt-5 mb-1">Upcoming Movies</h2>
+    <p class="grey--text">{{ movies.dates.minimum }} - {{ movies.dates.maximum }}</p>
     <v-row>
       <v-col class="col-md-2"> </v-col>
       <MovieList :movies="movies" />
@@ -12,7 +13,7 @@
 import MovieList from "@/components/Movie/MovieList";
 
 export default {
-  name: "Popular",
+  name: "Upcoming",
 
   components: {
     MovieList,
@@ -20,18 +21,22 @@ export default {
 
   computed: {
     movies() {
-      return this.$store.getters["movies/getPopularMovies"];
+      return this.$store.getters["movies/getUpcomingMovies"];
     },
   },
 
   created() {
-    this.$store.dispatch("movies/popularMovies");
+    this.$store.dispatch("movies/upcomingMovies");
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.popular {
+.upcoming {
   min-height: calc(100vh - 9.625rem);
+
+  p {
+    font-size: 0.875em;
+  }
 }
 </style>
