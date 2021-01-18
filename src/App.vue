@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif !important;
 }
 
 .v-main {
