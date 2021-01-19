@@ -33,7 +33,7 @@
           </v-btn>
         </router-link>
 
-        <v-switch v-model="$vuetify.theme.dark" inset hide-details class="ml-3"></v-switch>
+        <v-switch v-model="$vuetify.theme.dark" dark inset hide-details class="ml-3"></v-switch>
       </v-container>
     </v-app-bar>
 
@@ -98,7 +98,14 @@ export default {
 header {
   .v-toolbar__title {
     padding: 0.813rem 0;
+    color: white !important;
   }
+}
+
+.theme--light.v-app-bar.v-toolbar.v-sheet,
+.theme--light.v-btn.v-btn--has-bg {
+  background-color: #212121;
+  color: white;
 }
 
 @media screen and (max-width: 600px) {
