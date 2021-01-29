@@ -30,9 +30,9 @@
         </v-btn>
       </router-link>
 
-      <v-switch v-model="$vuetify.theme.dark" dark inset hide-details class="ml-3 d-none d-md-flex"></v-switch>
+      <v-switch v-model="$vuetify.theme.dark" inset hide-details class="ml-3 d-none d-md-flex"></v-switch>
 
-      <v-app-bar-nav-icon @click="$emit('toggleDrawer')" color="white" class="d-md-none"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="$emit('toggleDrawer')" class="d-md-none"></v-app-bar-nav-icon>
     </v-container>
   </v-app-bar>
 </template>

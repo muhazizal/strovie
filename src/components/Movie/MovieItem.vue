@@ -1,33 +1,35 @@
 <template>
-  <v-card class="mx-auto mb-5" max-width="225" hover>
-    <v-img
-      height="330"
-      :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-      :lazy-src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-    ></v-img>
+  <v-col class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+    <v-card class="mx-auto mb-5" width="100%" hover>
+      <v-img
+        height="100%"
+        :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+        :lazy-src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+      ></v-img>
 
-    <v-card-title class="pb-1 font-weight-bold">{{ movie.title }}</v-card-title>
+      <v-card-title class="pb-1 font-weight-bold">{{ editedMovieTitle }}</v-card-title>
 
-    <v-card-text class="pb-0">
-      {{ movie.release_date }}
-    </v-card-text>
+      <v-card-text class="pb-0">
+        {{ movie.release_date }}
+      </v-card-text>
 
-    <v-card-text class="mb-3">
-      <v-row align="center" class="mx-0">
-        <v-rating
-          :value="movie.vote_average / 2"
-          color="amber"
-          background-color="amber"
-          dense
-          half-increments
-          readonly
-          size="14"
-        ></v-rating>
+      <v-card-text class="mb-3">
+        <v-row align="center" class="mx-0">
+          <v-rating
+            :value="movie.vote_average / 2"
+            color="amber"
+            background-color="amber"
+            dense
+            half-increments
+            readonly
+            size="14"
+          ></v-rating>
 
-        <div class="rating ml-4">{{ movie.vote_average }} ({{ movie.vote_count }})</div>
-      </v-row>
-    </v-card-text>
-  </v-card>
+          <div class="rating ml-4">{{ movie.vote_average }} ({{ movie.vote_count }})</div>
+        </v-row>
+      </v-card-text>
+    </v-card>
+  </v-col>
 </template>
 
 <script>
@@ -36,6 +38,18 @@ export default {
 
   props: {
     movie: Object,
+  },
+
+  computed: {
+    editedMovieTitle() {
+      let newTitle = this.movie.title;
+
+      if (newTitle.length > 18) {
+        newTitle = newTitle.substring(0, 18) + "...";
+      }
+
+      return newTitle;
+    },
   },
 };
 </script>

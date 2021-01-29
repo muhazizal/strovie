@@ -2,7 +2,7 @@
   <v-app>
     <Navigation />
     <v-main>
-      <v-container class="py-0">
+      <v-container class="py-0 px-4 px-sm-3">
         <router-view></router-view>
       </v-container>
     </v-main>

@@ -49,10 +49,6 @@ export default {
   box-shadow: none;
 }
 
-.v-toolbar__title {
-  color: rgba(0, 0, 0, 0.87);
-}
-
 @media screen and (max-width: 600px) {
   .v-menu__content {
     top: 1rem !important;

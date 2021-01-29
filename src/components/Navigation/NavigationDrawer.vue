@@ -38,6 +38,6 @@ export default {
 
 <style lang="scss" scoped>
 .theme--light.v-navigation-drawer {
-  background-color: #212121 !important;
+  background-color: #f5f5f5 !important;
 }
 </style>
