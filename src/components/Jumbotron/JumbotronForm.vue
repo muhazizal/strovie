@@ -54,10 +54,9 @@ export default {
       this.$v.$touch();
 
       if (this.$v.$invalid) {
-        console.log("Search Movies Error");
+        return;
       } else {
-        const movie = this.movie;
-        this.$store.dispatch("movies/searchMovies", movie);
+        this.$store.dispatch("movies/searchMovies", this.movie);
       }
     },
   },

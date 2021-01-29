@@ -1,4 +1,8 @@
 export default {
+  getSearchMovies(state) {
+    return state.searchMovies;
+  },
+
   getPopularMovies(state) {
     return state.popularMovies;
   },

@@ -5,6 +5,12 @@ import actions from "./actions";
 export default {
   namespaced: true,
   state: {
+    searchMovies: {
+      page: null,
+      totalPages: null,
+      totalResults: null,
+      items: [],
+    },
     popularMovies: {
       page: null,
       totalPages: null,

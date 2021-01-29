@@ -16,7 +16,7 @@ export default {
   name: "TheFooter",
 
   data: () => ({
-    links: ["mdi-facebook", "mdi-twitter", "mdi-linkedin", "mdi-instagram"],
+    links: ["mdi-linkedin", "mdi-instagram"],
   }),
 };
 </script>

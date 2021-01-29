@@ -1,13 +1,28 @@
 import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
 
+import router from "@/router/index";
+
 export default {
-  searchMovies({ commit }, movie) {
+  searchMovies({ commit, state }, movie) {
     axios
       .get(API_ENDPOINT.SEARCH_MOVIES(movie))
       .then((response) => {
-        console.log(response);
-        commit("SET_MOVIES", response.data.results);
+        if (response.status === 200) {
+          console.log(response);
+          if (state.popularMovies.page === response.data.page) {
+            return;
+          }
+
+          commit("SET_SEARCH_MOVIES", {
+            items: response.data.results,
+            page: response.data.page,
+            totalPages: response.data.total_pages,
+            totalResults: response.data.total_results,
+          });
+
+          router.push("/search");
+        }
       })
       .catch((error) => {
         console.log(error);

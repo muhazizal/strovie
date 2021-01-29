@@ -1,4 +1,11 @@
 export default {
+  SET_SEARCH_MOVIES(state, movies) {
+    state.searchMovies.items.push(movies.items);
+    state.searchMovies.page = movies.page;
+    state.searchMovies.totalPages = movies.totalPages;
+    state.searchMovies.totalResults = movies.totalResults;
+  },
+
   SET_POPULAR_MOVIES(state, movies) {
     state.popularMovies.items.push(movies.items);
     state.popularMovies.page = movies.page;

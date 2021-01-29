@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" absolute temporary stateless>
+  <v-navigation-drawer v-model="drawer" fixed temporary stateless width="100%">
     <v-menu offset-x>
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" class="ml-4 mt-4 d-block">
@@ -35,3 +35,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.theme--light.v-navigation-drawer {
+  background-color: #212121 !important;
+}
+</style>

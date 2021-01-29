@@ -31,6 +31,11 @@ const routes = [
     name: "TopRated",
     component: () => import(/* webpackChunkName: "movies" */ "@/views/TopRated.vue"),
   },
+  {
+    path: "/search",
+    name: "SearchResults",
+    component: () => import(/* webpackChunkName: "movies" */ "@/views/Search.vue"),
+  },
 ];
 
 const router = new VueRouter({

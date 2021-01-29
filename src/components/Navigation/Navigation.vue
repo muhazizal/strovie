@@ -42,24 +42,15 @@ export default {
 
 .router-link-active[href="/favorites"] .v-btn.theme--light,
 .router-link-active[href="/favorites"] .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
-  color: $primary-dark !important;
+  color: $primary-light !important;
 }
 
 .v-btn {
   box-shadow: none;
 }
 
-header {
-  .v-toolbar__title {
-    padding: 0.813rem 0;
-    color: white !important;
-  }
-}
-
-.theme--light.v-app-bar.v-toolbar.v-sheet,
-.theme--light.v-btn.v-btn--has-bg {
-  background-color: #212121;
-  color: white;
+.v-toolbar__title {
+  color: rgba(0, 0, 0, 0.87);
 }
 
 @media screen and (max-width: 600px) {
