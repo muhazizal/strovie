@@ -3,15 +3,18 @@
     <v-card class="mx-auto " width="100%" hover>
       <v-img
         height="100%"
+        width="100%"
+        contain
+        :alt="movie.title"
         :src="
           movie.poster_path === null
-            ? '../../assets/images/not-found.svg'
-            : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+            ? '/img/svg/not-found.svg'
+            : `https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`
         "
         :lazy-src="
           movie.poster_path === null
-            ? '../../assets/images/not-found.svg'
-            : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+            ? '/img/svg/not-found.svg'
+            : `https://image.tmdb.org/t/p/w220_and_h330_face${movie.poster_path}`
         "
       >
         <template v-slot:placeholder>
@@ -74,6 +77,10 @@ export default {
 
   &:hover {
     box-shadow: 0px 0px 10px 2px rgba(3, 218, 198, 1) !important;
+  }
+
+  .v-image {
+    min-height: 18.75rem;
   }
 }
 </style>
