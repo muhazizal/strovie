@@ -1,54 +1,44 @@
 <template>
   <v-col class="col-12 col-md-10 px-0 py-2 ma-0">
-    <h3>Movie Filters</h3>
-    <v-btn v-if="swap === true" text small @click="sortMoviesByTitleAscending">
-      <v-icon left dark>
-        mdi-sort
-      </v-icon>
-      Sort By Title
-    </v-btn>
+    <h3 class="filter-title">Movie Filters</h3>
 
-    <v-btn v-if="swap === false" text small @click="sortMoviesByTitleDecending">
-      <v-icon left dark>
-        mdi-sort
-      </v-icon>
-      Sort By Title
-    </v-btn>
+    <FilterTitle :movies="movies" />
+    <FilterDate :movies="movies" />
+    <FilterRating :movies="movies" />
+    <FilterVote :movies="movies" />
   </v-col>
 </template>
 
 <script>
+import FilterTitle from "./Filters/FilterTitle";
+import FilterDate from "./Filters/FilterDate";
+import FilterRating from "./Filters/FilterRating";
+import FilterVote from "./Filters/FilterVote.vue";
+
 export default {
   name: "MovieFilters",
 
-  data() {
-    return {
-      swap: true,
-    };
+  components: {
+    FilterTitle,
+    FilterDate,
+    FilterRating,
+    FilterVote,
   },
 
   props: {
     movies: Object,
   },
-
-  methods: {
-    sortMoviesByTitleAscending() {
-      const moviePage = this.movies.page;
-      const movieItem = this.movies.items[moviePage - 1];
-
-      movieItem.sort((a, b) => a.title.localeCompare(b.title));
-      this.swap = false;
-    },
-
-    sortMoviesByTitleDecending() {
-      const moviePage = this.movies.page;
-      const movieItem = this.movies.items[moviePage - 1];
-
-      movieItem.sort((a, b) => b.title.localeCompare(a.title));
-      this.swap = true;
-    },
-  },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.filter-title {
+  font-size: 1.125em;
+}
+
+.v-btn {
+  span {
+    font-size: 0.833em;
+  }
+}
+</style>

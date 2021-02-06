@@ -1,6 +1,6 @@
 <template>
   <v-col class="col-12 col-md-10">
-    <v-row class="ma-0">
+    <v-row class="ma-0 mb-5">
       <MovieItem v-for="movie in movies.items[movies.page - 1]" :key="movie.id" :movie="movie" />
     </v-row>
   </v-col>

@@ -15,6 +15,7 @@
         @blur="$v.movie.$touch()"
       ></v-text-field>
     </v-theme-provider>
+
     <v-btn type="submit" @keypress.enter.prevent="searchMovies" @click.prevent="searchMovies" color="primary" large
       >Search</v-btn
     >
@@ -26,7 +27,7 @@ import { validationMixin } from "vuelidate";
 import { required } from "vuelidate/lib/validators";
 
 export default {
-  name: "JumbotronForm",
+  name: "FormSearchMovie",
 
   mixins: [validationMixin],
 

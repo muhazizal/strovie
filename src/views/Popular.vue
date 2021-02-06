@@ -1,10 +1,12 @@
 <template>
   <div class="popular">
-    <h2 class="my-5">Popular Movies</h2>
+    <h2 class="my-3 my-sm-5">Popular Movies</h2>
+
     <v-row>
       <v-col class="col-12 col-md-2">
         <MovieFilters :movies="movies" />
       </v-col>
+
       <MovieList :movies="movies" />
     </v-row>
   </div>

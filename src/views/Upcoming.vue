@@ -3,7 +3,10 @@
     <h2 class="mt-5 mb-1">Upcoming Movies</h2>
     <p class="grey--text">{{ movies.dates.minimum }} - {{ movies.dates.maximum }}</p>
     <v-row>
-      <v-col class="col-md-2"> </v-col>
+      <v-col class="col-md-2">
+        <MovieFilters :movies="movies" />
+      </v-col>
+
       <MovieList :movies="movies" />
     </v-row>
   </div>
@@ -11,12 +14,14 @@
 
 <script>
 import MovieList from "@/components/Movie/MovieList";
+import MovieFilters from "../components/Movie/MovieFilters.vue";
 
 export default {
   name: "Upcoming",
 
   components: {
     MovieList,
+    MovieFilters,
   },
 
   computed: {
