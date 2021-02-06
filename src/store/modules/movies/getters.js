@@ -18,4 +18,8 @@ export default {
   getTopRatedMovies(state) {
     return state.topRatedMovies;
   },
+
+  getLoading(state) {
+    return state.loading;
+  },
 };

@@ -1,4 +1,8 @@
 export default {
+  SET_LOADING(state) {
+    state.loading = false;
+  },
+
   SET_SEARCH_MOVIES(state, movies) {
     state.searchMovies.items.push(movies.items);
     state.searchMovies.page = movies.page;

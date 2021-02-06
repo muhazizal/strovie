@@ -6,14 +6,16 @@
         <MovieFilters :movies="movies" />
       </v-col>
 
-      <MovieList :movies="movies" />
+      <MovieListSkeleton v-if="loading" />
+      <MovieList v-if="!loading" :movies="movies" />
     </v-row>
   </div>
 </template>
 
 <script>
 import MovieList from "@/components/Movie/MovieList";
-import MovieFilters from "../components/Movie/MovieFilters.vue";
+import MovieFilters from "@/components/Movie/MovieFilters";
+import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
   name: "Search",
@@ -21,6 +23,7 @@ export default {
   components: {
     MovieList,
     MovieFilters,
+    MovieListSkeleton,
   },
 
   created() {
@@ -30,6 +33,10 @@ export default {
   },
 
   computed: {
+    loading() {
+      return this.$store.getters["movies/getLoading"];
+    },
+
     movies() {
       return this.$store.getters["movies/getSearchMovies"];
     },

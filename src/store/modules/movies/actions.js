@@ -19,6 +19,9 @@ export default {
           });
         }
       })
+      .then(() => {
+        commit("SET_LOADING");
+      })
       .catch((error) => {
         console.log(error);
       });
