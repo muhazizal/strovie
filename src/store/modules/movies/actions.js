@@ -1,5 +1,6 @@
 import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
+import router from "@/router/index";
 
 export default {
   searchMovies({ commit, state }, movie) {
@@ -17,10 +18,12 @@ export default {
             totalPages: response.data.total_pages,
             totalResults: response.data.total_results,
           });
+
+          router.replace({ path: "search", query: { title: movie } });
         }
       })
       .then(() => {
-        commit("SET_LOADING");
+        commit("SET_LOADING", false);
       })
       .catch((error) => {
         console.log(error);
@@ -43,6 +46,9 @@ export default {
             items: response.data.results,
           });
         }
+      })
+      .then(() => {
+        commit("SET_LOADING", false);
       })
       .catch((error) => {
         console.log(error);
@@ -67,6 +73,9 @@ export default {
           });
         }
       })
+      .then(() => {
+        commit("SET_LOADING", false);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -90,6 +99,9 @@ export default {
           });
         }
       })
+      .then(() => {
+        commit("SET_LOADING", false);
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -111,6 +123,9 @@ export default {
             items: response.data.results,
           });
         }
+      })
+      .then(() => {
+        commit("SET_LOADING", false);
       })
       .catch((error) => {
         console.log(error);

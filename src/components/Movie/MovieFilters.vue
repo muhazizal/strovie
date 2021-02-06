@@ -33,7 +33,7 @@ export default {
 
 <style lang="scss">
 .filter-title {
-  font-size: 1.125em;
+  font-size: 1em;
 }
 
 .v-btn {

@@ -59,7 +59,6 @@ export default {
         return;
       } else {
         this.$store.dispatch("movies/searchMovies", this.movie);
-        this.$router.replace({ path: "search", query: { title: this.movie } });
       }
     },
   },

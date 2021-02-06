@@ -76,7 +76,7 @@ export default {
   }
 
   &:hover {
-    box-shadow: 0px 0px 10px 2px rgba(3, 218, 198, 1) !important;
+    box-shadow: 0px 0px 15px 2px lightgrey !important;
   }
 
   .v-image {

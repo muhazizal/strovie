@@ -7,7 +7,8 @@
         <MovieFilters :movies="movies" />
       </v-col>
 
-      <MovieList :movies="movies" />
+      <MovieListSkeleton v-if="loading" />
+      <MovieList v-if="!loading" :movies="movies" />
     </v-row>
   </div>
 </template>
@@ -15,6 +16,7 @@
 <script>
 import MovieList from "@/components/Movie/MovieList";
 import MovieFilters from "@/components/Movie/MovieFilters";
+import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
   name: "Popular",
@@ -22,9 +24,14 @@ export default {
   components: {
     MovieList,
     MovieFilters,
+    MovieListSkeleton,
   },
 
   computed: {
+    loading() {
+      return this.$store.getters["movies/getLoading"];
+    },
+
     movies() {
       return this.$store.getters["movies/getPopularMovies"];
     },
@@ -32,6 +39,10 @@ export default {
 
   created() {
     this.$store.dispatch("movies/popularMovies");
+  },
+
+  destroyed() {
+    this.$store.commit("movies/SET_LOADING", true);
   },
 };
 </script>

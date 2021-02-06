@@ -6,7 +6,8 @@
         <MovieFilters :movies="movies" />
       </v-col>
 
-      <MovieList :movies="movies" />
+      <MovieListSkeleton v-if="loading" />
+      <MovieList v-if="!loading" :movies="movies" />
     </v-row>
   </div>
 </template>
@@ -14,6 +15,7 @@
 <script>
 import MovieList from "@/components/Movie/MovieList";
 import MovieFilters from "../components/Movie/MovieFilters.vue";
+import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
   name: "TopRated",
@@ -21,9 +23,14 @@ export default {
   components: {
     MovieList,
     MovieFilters,
+    MovieListSkeleton,
   },
 
   computed: {
+    loading() {
+      return this.$store.getters["movies/getLoading"];
+    },
+
     movies() {
       return this.$store.getters["movies/getTopRatedMovies"];
     },
@@ -31,6 +38,10 @@ export default {
 
   created() {
     this.$store.dispatch("movies/topRatedMovies");
+  },
+
+  destroyed() {
+    this.$store.commit("movies/SET_LOADING", true);
   },
 };
 </script>

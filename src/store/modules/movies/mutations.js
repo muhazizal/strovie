@@ -1,6 +1,6 @@
 export default {
-  SET_LOADING(state) {
-    state.loading = false;
+  SET_LOADING(state, payload) {
+    state.loading = payload;
   },
 
   SET_SEARCH_MOVIES(state, movies) {
