@@ -3,8 +3,16 @@
     <v-card class="mx-auto " width="100%" hover>
       <v-img
         height="100%"
-        :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
-        :lazy-src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`"
+        :src="
+          movie.poster_path === null
+            ? '../../assets/images/not-found.svg'
+            : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        "
+        :lazy-src="
+          movie.poster_path === null
+            ? '../../assets/images/not-found.svg'
+            : `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        "
       >
         <template v-slot:placeholder>
           <v-row class="fill-height ma-0" align="center" justify="center">

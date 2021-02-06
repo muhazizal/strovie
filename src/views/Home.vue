@@ -2,6 +2,7 @@
   <div class="home d-flex flex-column justify-center text-center">
     <h1>Welcome to Strovie.</h1>
     <p class="mb-10">Discover millions of movies.</p>
+
     <FormSearchMovie />
   </div>
 </template>

@@ -2,7 +2,7 @@
   <div class="filter-vote">
     <v-btn text small @click="ascending ? sortMoviesByVoteAscending() : sortMoviesByVoteDescending()">
       <v-icon left dark>
-        {{ ascending ? "mdi-sort-numeric-ascending-variant" : "mdi-sort-numeric-descending-variant" }}
+        {{ ascending ? "mdi-sort-numeric-descending-variant" : "mdi-sort-numeric-ascending-variant" }}
       </v-icon>
       Sort By Vote
     </v-btn>
@@ -15,7 +15,7 @@ export default {
 
   data() {
     return {
-      ascending: true,
+      ascending: false,
     };
   },
 

@@ -6,7 +6,12 @@
           {{ link }}
         </v-icon>
       </v-btn>
-      <p class="mb-0">Copyright &copy; 2021 Strovie</p>
+      <p class="mb-0">
+        Copyright &copy; 2021 Strovie - Created by
+        <a href="https://www.linkedin.com/in/muhamad-aziz-al-asaad/" target="_blank" rel="noreferrer noopener"
+          >Muhazizal</a
+        >
+      </p>
     </v-col>
   </v-footer>
 </template>
@@ -26,5 +31,10 @@ export default {
 p {
   font-size: 0.75rem;
   font-weight: 300;
+
+  a {
+    text-decoration: none;
+    color: $primary-light;
+  }
 }
 </style>

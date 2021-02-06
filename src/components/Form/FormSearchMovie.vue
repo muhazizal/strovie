@@ -25,6 +25,7 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required } from "vuelidate/lib/validators";
+// import router from "@/router/index";
 
 export default {
   name: "FormSearchMovie",
@@ -58,6 +59,7 @@ export default {
         return;
       } else {
         this.$store.dispatch("movies/searchMovies", this.movie);
+        this.$router.replace({ path: "search", query: { title: this.movie } });
       }
     },
   },

@@ -1,15 +1,12 @@
 import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
 
-import router from "@/router/index";
-
 export default {
   searchMovies({ commit, state }, movie) {
     axios
       .get(API_ENDPOINT.SEARCH_MOVIES(movie))
       .then((response) => {
         if (response.status === 200) {
-          console.log(response);
           if (state.popularMovies.page === response.data.page) {
             return;
           }
@@ -20,8 +17,6 @@ export default {
             totalPages: response.data.total_pages,
             totalResults: response.data.total_results,
           });
-
-          router.push("/search");
         }
       })
       .catch((error) => {
