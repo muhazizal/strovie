@@ -14,27 +14,32 @@ const routes = [
   {
     path: "/popular",
     name: "Popular",
-    component: () => import(/* webpackChunkName: "movies" */ "@/views/Popular.vue"),
+    component: () => import(/* webpackChunkName: "popularMovies" */ "@/views/Popular.vue"),
   },
   {
     path: "/now-playing",
     name: "NowPlaying",
-    component: () => import(/* webpackChunkName: "movies" */ "@/views/NowPlaying.vue"),
+    component: () => import(/* webpackChunkName: "nowPlayingMovies" */ "@/views/NowPlaying.vue"),
   },
   {
     path: "/upcoming",
     name: "Upcoming",
-    component: () => import(/* webpackChunkName: "movies" */ "@/views/Upcoming.vue"),
+    component: () => import(/* webpackChunkName: "upcomingMovies" */ "@/views/Upcoming.vue"),
   },
   {
     path: "/top-rated",
     name: "TopRated",
-    component: () => import(/* webpackChunkName: "movies" */ "@/views/TopRated.vue"),
+    component: () => import(/* webpackChunkName: "topRatedMovies" */ "@/views/TopRated.vue"),
   },
   {
     path: "/search",
     name: "SearchResults",
-    component: () => import(/* webpackChunkName: "movies" */ "@/views/Search.vue"),
+    component: () => import(/* webpackChunkName: "searchMovies" */ "@/views/Search.vue"),
+  },
+  {
+    path: "*",
+    redirect: "/",
+    component: Home,
   },
 ];
 

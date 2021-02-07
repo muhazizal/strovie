@@ -19,7 +19,9 @@ export default {
             totalResults: response.data.total_results,
           });
 
-          router.replace({ path: "search", query: { title: movie } });
+          router.replace({ path: "/search", query: { title: movie } }).catch((error) => {
+            return error;
+          });
         }
       })
       .then(() => {
