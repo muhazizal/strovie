@@ -1,136 +1,101 @@
 import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
-import router from "@/router/index";
 
 export default {
-  searchMovies({ commit, state }, movie) {
-    axios
-      .get(API_ENDPOINT.SEARCH_MOVIES(movie))
-      .then((response) => {
-        if (response.status === 200) {
-          if (state.popularMovies.page === response.data.page) {
-            return;
-          }
+  async searchMovies({ commit }, movie) {
+    try {
+      const response = await axios.get(API_ENDPOINT.SEARCH_MOVIES(movie));
 
-          commit("SET_SEARCH_MOVIES", {
-            items: response.data.results,
-            page: response.data.page,
-            totalPages: response.data.total_pages,
-            totalResults: response.data.total_results,
-          });
+      if (response.status === 200) {
+        commit("SET_SEARCH_MOVIES", {
+          items: response.data.results,
+          page: response.data.page,
+          totalPages: response.data.total_pages,
+          totalResults: response.data.total_results,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
 
-          router.replace({ path: "/search", query: { title: movie } }).catch((error) => {
-            return error;
-          });
-        }
-      })
-      .then(() => {
-        commit("SET_LOADING", false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    commit("SET_LOADING", false);
   },
 
-  popularMovies({ state, commit }) {
-    axios
-      .get(API_ENDPOINT.GET_POPULAR)
-      .then((response) => {
-        if (response.status === 200) {
-          if (state.popularMovies.page === response.data.page) {
-            return;
-          }
+  async popularMovies({ commit }) {
+    try {
+      const response = await axios.get(API_ENDPOINT.GET_POPULAR);
 
-          commit("SET_POPULAR_MOVIES", {
-            page: response.data.page,
-            totalPages: response.data.total_pages,
-            totalResults: response.data.total_results,
-            items: response.data.results,
-          });
-        }
-      })
-      .then(() => {
-        commit("SET_LOADING", false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      if (response.status === 200) {
+        commit("SET_POPULAR_MOVIES", {
+          page: response.data.page,
+          totalPages: response.data.total_pages,
+          totalResults: response.data.total_results,
+          items: response.data.results,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    commit("SET_LOADING", false);
   },
 
-  nowPlayingMovies({ state, commit }) {
-    axios
-      .get(API_ENDPOINT.GET_NOW_PLAYING)
-      .then((response) => {
-        if (response.status === 200) {
-          if (state.nowPlayingMovies.page === response.data.page) {
-            return;
-          }
+  async nowPlayingMovies({ commit }) {
+    try {
+      const response = await axios.get(API_ENDPOINT.GET_NOW_PLAYING);
 
-          commit("SET_NOW_PLAYING_MOVIES", {
-            page: response.data.page,
-            totalPages: response.data.total_pages,
-            totalResults: response.data.total_results,
-            items: response.data.results,
-            dates: response.data.dates,
-          });
-        }
-      })
-      .then(() => {
-        commit("SET_LOADING", false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      if (response.status === 200) {
+        commit("SET_NOW_PLAYING_MOVIES", {
+          page: response.data.page,
+          totalPages: response.data.total_pages,
+          totalResults: response.data.total_results,
+          items: response.data.results,
+          dates: response.data.dates,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    commit("SET_LOADING", false);
   },
 
-  upcomingMovies({ state, commit }) {
-    axios
-      .get(API_ENDPOINT.GET_UPCOMING)
-      .then((response) => {
-        if (response.status === 200) {
-          if (state.upcomingMovies.page === response.data.page) {
-            return;
-          }
+  async upcomingMovies({ commit }) {
+    try {
+      const response = await axios.get(API_ENDPOINT.GET_UPCOMING);
 
-          commit("SET_UPCOMING_MOVIES", {
-            page: response.data.page,
-            totalPages: response.data.total_pages,
-            totalResults: response.data.total_results,
-            items: response.data.results,
-            dates: response.data.dates,
-          });
-        }
-      })
-      .then(() => {
-        commit("SET_LOADING", false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      if (response.status === 200) {
+        commit("SET_UPCOMING_MOVIES", {
+          page: response.data.page,
+          totalPages: response.data.total_pages,
+          totalResults: response.data.total_results,
+          items: response.data.results,
+          dates: response.data.dates,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    commit("SET_LOADING", false);
   },
 
-  topRatedMovies({ state, commit }) {
-    axios
-      .get(API_ENDPOINT.GET_TOP_RATED)
-      .then((response) => {
-        if (response.status === 200) {
-          if (state.topRatedMovies.page === response.data.page) {
-            return;
-          }
+  async topRatedMovies({ commit }) {
+    try {
+      const response = await axios.get(API_ENDPOINT.GET_TOP_RATED);
 
-          commit("SET_TOP_RATED_MOVIES", {
-            page: response.data.page,
-            totalPages: response.data.total_pages,
-            totalResults: response.data.total_results,
-            items: response.data.results,
-          });
-        }
-      })
-      .then(() => {
-        commit("SET_LOADING", false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      if (response.status === 200) {
+        commit("SET_TOP_RATED_MOVIES", {
+          page: response.data.page,
+          totalPages: response.data.total_pages,
+          totalResults: response.data.total_results,
+          items: response.data.results,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    commit("SET_LOADING", false);
   },
 };

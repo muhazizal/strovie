@@ -45,9 +45,11 @@ export default {
   },
 
   created() {
-    // fetch searched movie when the page refreshed
+    // fetch searched movie if the page reloaded
     const movie = this.$route.query.title;
-    this.$store.dispatch("movies/searchMovies", movie);
+    if (movie) {
+      this.$store.dispatch("movies/searchMovies", movie);
+    }
   },
 
   destroyed() {

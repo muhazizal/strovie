@@ -17,7 +17,7 @@
 
 <script>
 import MovieList from "@/components/Movie/MovieList";
-import MovieFilters from "../components/Movie/MovieFilters.vue";
+import MovieFilters from "@/components/Movie/MovieFilters.vue";
 import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {

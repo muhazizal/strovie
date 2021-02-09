@@ -25,7 +25,7 @@
 <script>
 import { validationMixin } from "vuelidate";
 import { required } from "vuelidate/lib/validators";
-// import router from "@/router/index";
+import router from "@/router/index";
 
 export default {
   name: "FormSearchMovie",
@@ -52,14 +52,17 @@ export default {
   },
 
   methods: {
-    searchMovies() {
+    async searchMovies() {
       this.$v.$touch();
 
       if (this.$v.$invalid) {
         return;
-      } else {
-        this.$store.dispatch("movies/searchMovies", this.movie);
       }
+
+      await this.$store.dispatch("movies/searchMovies", this.movie);
+      router.push({ path: "/search", query: { title: this.movie } }).catch((error) => {
+        return error;
+      });
     },
   },
 };
