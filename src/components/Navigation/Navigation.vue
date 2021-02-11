@@ -30,6 +30,16 @@ export default {
 </script>
 
 <style lang="scss">
+.v-list-item.theme--dark:hover {
+  border-bottom: 1px solid $primary-dark;
+  border-top: 1px solid $primary-dark;
+}
+
+.v-list-item.theme--light:hover {
+  border-bottom: 1px solid $primary-dark;
+  border-top: 1px solid $primary-dark;
+}
+
 .router-link-active .v-btn.theme--dark,
 .router-link-active .theme--dark.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
   color: $primary-dark !important;
