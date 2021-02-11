@@ -1,8 +1,14 @@
 <template>
   <v-navigation-drawer v-model="drawer" absolute temporary stateless width="100%">
-    <v-icon class="ml-3 mt-4" @click="$emit('toggleDrawer')">
-      mdi-close
-    </v-icon>
+    <v-row class="ma-0">
+      <v-icon class="ml-3 mt-4" @click="$emit('toggleDrawer')">
+        mdi-close
+      </v-icon>
+
+      <v-spacer></v-spacer>
+
+      <v-switch v-model="$vuetify.theme.dark" inset hide-details class="mr-2 d-md-none"></v-switch>
+    </v-row>
 
     <FormSearchMovie :inDrawer="true" @toggleDrawer="$emit('toggleDrawer')" :drawer="drawer" />
 
@@ -49,5 +55,9 @@ export default {
 <style lang="scss" scoped>
 .theme--light.v-navigation-drawer {
   background-color: #f5f5f5 !important;
+}
+
+.theme--dark.v-btn.v-btn--has-bg {
+  background-color: #363636 !important;
 }
 </style>
