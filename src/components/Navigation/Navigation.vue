@@ -18,7 +18,7 @@ export default {
   },
 
   data: () => ({
-    drawer: false,
+    drawer: null,
     movies: [
       { category: "Popular", destination: "/popular" },
       { category: "Now Playing", destination: "/now-playing" },

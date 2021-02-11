@@ -1,9 +1,8 @@
 <template>
-  <form class="d-flex justify-center" @submit.prevent>
+  <form class="d-flex justify-center" :class="inDrawer ? 'inDrawer' : ''" @submit.prevent>
     <v-theme-provider root>
       <v-text-field
         v-model="movie"
-        id="movie"
         name="movie"
         label="Search movie"
         dense
@@ -13,7 +12,6 @@
         prepend-inner-icon="mdi-magnify"
         @keydown.enter.prevent="searchMovies"
         hide-details="auto"
-        @input="$v.movie.$touch()"
       ></v-text-field>
     </v-theme-provider>
   </form>
@@ -24,13 +22,17 @@ import router from "@/router/index";
 
 export default {
   name: "FormSearchMovie",
+
+  props: {
+    inDrawer: Boolean,
+    drawer: Boolean,
+  },
+
   data() {
     return {
       movie: "",
     };
   },
-
-  computed: {},
 
   methods: {
     async searchMovies() {
@@ -42,6 +44,7 @@ export default {
       router.push({ path: "/search", query: { title: this.movie } }).catch((error) => {
         return error;
       });
+      this.$emit("toggleDrawer");
     },
   },
 };
@@ -51,5 +54,10 @@ export default {
 form {
   width: 100%;
   max-width: 25rem;
+}
+
+.inDrawer {
+  padding: 1rem 1rem 0 1rem;
+  max-width: 100% !important;
 }
 </style>

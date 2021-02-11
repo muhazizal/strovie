@@ -38,7 +38,7 @@ export default {
 
 .v-btn {
   span {
-    font-size: 0.833em;
+    font-size: 0.875em;
   }
 }
 </style>

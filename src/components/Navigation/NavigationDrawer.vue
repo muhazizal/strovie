@@ -1,5 +1,11 @@
 <template>
-  <v-navigation-drawer v-model="drawer" fixed temporary stateless width="100%">
+  <v-navigation-drawer v-model="drawer" absolute temporary stateless width="100%">
+    <v-icon class="ml-3 mt-4" @click="$emit('toggleDrawer')">
+      mdi-close
+    </v-icon>
+
+    <FormSearchMovie :inDrawer="true" @toggleDrawer="$emit('toggleDrawer')" :drawer="drawer" />
+
     <v-menu offset-x>
       <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" class="ml-4 mt-4 d-block">
@@ -26,8 +32,12 @@
 </template>
 
 <script>
+import FormSearchMovie from "../Form/FormSearchMovie.vue";
+
 export default {
   name: "NavigationDrawer",
+
+  components: { FormSearchMovie },
 
   props: {
     drawer: Boolean,

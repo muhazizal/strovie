@@ -4,11 +4,15 @@
       <v-row>
         <v-col class="col-12 col-md-2 d-flex  align-center">
           <v-toolbar-title class="pl-md-0">Strovie</v-toolbar-title>
+
+          <v-spacer></v-spacer>
+
+          <v-app-bar-nav-icon @click="$emit('toggleDrawer')" class="d-md-none"></v-app-bar-nav-icon>
         </v-col>
 
-        <v-col class="col-12 col-md-10 ">
+        <v-col class="col-md-10 d-none d-md-block">
           <v-row class="d-flex align-center ma-3">
-            <FormSearchMovie />
+            <FormSearchMovie class="d-none d-md-block" />
 
             <v-spacer></v-spacer>
 
@@ -36,8 +40,6 @@
             </router-link>
 
             <v-switch v-model="$vuetify.theme.dark" inset hide-details class="ml-3 d-none d-md-flex"></v-switch>
-
-            <v-app-bar-nav-icon @click="$emit('toggleDrawer')" class="d-md-none"></v-app-bar-nav-icon>
           </v-row>
         </v-col>
       </v-row>
