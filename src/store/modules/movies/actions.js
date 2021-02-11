@@ -18,7 +18,7 @@ export default {
       console.log(error);
     }
 
-    commit("SET_LOADING", false);
+    commit("SET_LOADING", false, { root: true });
   },
 
   async popularMovies({ commit }) {
@@ -37,7 +37,7 @@ export default {
       console.log(error);
     }
 
-    commit("SET_LOADING", false);
+    commit("SET_LOADING", false, { root: true });
   },
 
   async nowPlayingMovies({ commit }) {
@@ -57,7 +57,7 @@ export default {
       console.log(error);
     }
 
-    commit("SET_LOADING", false);
+    commit("SET_LOADING", false, { root: true });
   },
 
   async upcomingMovies({ commit }) {
@@ -77,7 +77,7 @@ export default {
       console.log(error);
     }
 
-    commit("SET_LOADING", false);
+    commit("SET_LOADING", false, { root: true });
   },
 
   async topRatedMovies({ commit }) {
@@ -96,6 +96,6 @@ export default {
       console.log(error);
     }
 
-    commit("SET_LOADING", false);
+    commit("SET_LOADING", false, { root: true });
   },
 };

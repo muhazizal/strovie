@@ -34,7 +34,16 @@ p {
 
   a {
     text-decoration: none;
-    color: $primary-light;
+  }
+
+  .router-link-active .v-btn.theme--dark,
+  .router-link-active .theme--dark.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+    color: $primary-dark !important;
+  }
+
+  .router-link-active .v-btn.theme--light,
+  .router-link-active .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+    color: $primary-light !important;
   }
 }
 </style>

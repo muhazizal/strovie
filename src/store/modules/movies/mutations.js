@@ -1,8 +1,4 @@
 export default {
-  SET_LOADING(state, payload) {
-    state.loading = payload;
-  },
-
   SET_SEARCH_MOVIES(state, movies) {
     state.searchMovies.items.splice(0, state.searchMovies.items.length, movies.items);
     state.searchMovies.page = movies.page;

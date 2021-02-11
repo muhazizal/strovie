@@ -5,7 +5,6 @@ import actions from "./actions";
 export default {
   namespaced: true,
   state: {
-    loading: true,
     searchMovies: {
       page: null,
       totalPages: null,

@@ -29,7 +29,7 @@ export default {
 
   computed: {
     loading() {
-      return this.$store.getters["movies/getLoading"];
+      return this.$store.getters["getLoading"];
     },
 
     movies() {
@@ -42,7 +42,7 @@ export default {
   },
 
   destroyed() {
-    this.$store.commit("movies/SET_LOADING", true);
+    this.$store.commit("SET_LOADING", true);
   },
 };
 </script>
