@@ -1,15 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-import Home from "@/views/Home.vue";
-
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home,
+    redirect: "/popular",
   },
   {
     path: "/popular",
@@ -38,8 +35,7 @@ const routes = [
   },
   {
     path: "*",
-    redirect: "/",
-    component: Home,
+    redirect: "/popular",
   },
 ];
 

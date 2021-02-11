@@ -6,56 +6,35 @@
         id="movie"
         name="movie"
         label="Search movie"
-        required
+        dense
         outlined
+        clearable
         type="search"
+        prepend-inner-icon="mdi-magnify"
         @keydown.enter.prevent="searchMovies"
-        :error-messages="movieErrors"
+        hide-details="auto"
         @input="$v.movie.$touch()"
-        @blur="$v.movie.$touch()"
       ></v-text-field>
     </v-theme-provider>
-
-    <v-btn type="submit" @keypress.enter.prevent="searchMovies" @click.prevent="searchMovies" color="primary" large
-      >Search</v-btn
-    >
   </form>
 </template>
 
 <script>
-import { validationMixin } from "vuelidate";
-import { required } from "vuelidate/lib/validators";
 import router from "@/router/index";
 
 export default {
   name: "FormSearchMovie",
-
-  mixins: [validationMixin],
-
-  validations: {
-    movie: { required },
-  },
-
   data() {
     return {
       movie: "",
     };
   },
 
-  computed: {
-    movieErrors() {
-      const errors = [];
-      if (!this.$v.movie.$dirty) return errors;
-      !this.$v.movie.required && errors.push("Title is required");
-      return errors;
-    },
-  },
+  computed: {},
 
   methods: {
     async searchMovies() {
-      this.$v.$touch();
-
-      if (this.$v.$invalid) {
+      if (!this.movie) {
         return;
       }
 
@@ -70,13 +49,7 @@ export default {
 
 <style lang="scss" scoped>
 form {
-  .v-text-field {
-    max-width: 31.25rem;
-    margin-right: 0.75rem;
-  }
-
-  .v-btn {
-    height: 56px !important;
-  }
+  width: 100%;
+  max-width: 25rem;
 }
 </style>

@@ -1,13 +1,7 @@
 <template>
   <div class="search">
-    <v-row>
-      <v-col class="col-2">
-        <p class="mt-5 mb-0 movie-title">{{ this.$route.query.title }}</p>
-        <h2>Search Results</h2>
-      </v-col>
-
-      <v-col class="col-10 search-form"> </v-col>
-    </v-row>
+    <p class="mt-5 mb-0 movie-title">{{ this.$route.query.title }}</p>
+    <h2>Search Results</h2>
 
     <v-row>
       <v-col class="col-md-2">
