@@ -1,8 +1,7 @@
 <template>
-  <div class="upcoming">
-    <h2 class="mt-5 mb-1">Upcoming Movies</h2>
-    <v-skeleton-loader v-if="loading" max-width="150" type="text"></v-skeleton-loader>
-    <p v-if="!loading" class="grey--text">{{ movies.dates.minimum }} - {{ movies.dates.maximum }}</p>
+  <div class="search">
+    <p class="mt-5 mb-0 movie-title">{{ this.$route.query.title }}</p>
+    <h2>Search Results</h2>
 
     <v-row>
       <v-col class="col-md-2">
@@ -17,11 +16,11 @@
 
 <script>
 import MovieList from "@/components/Movie/MovieList";
-import MovieFilters from "@/components/Movie/MovieFilters.vue";
+import MovieFilters from "@/components/Movie/MovieFilters";
 import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
-  name: "Upcoming",
+  name: "Search",
 
   components: {
     MovieList,
@@ -35,12 +34,15 @@ export default {
     },
 
     movies() {
-      return this.$store.getters["movies/getUpcomingMovies"];
+      return this.$store.getters["movies/getSearchMovies"];
     },
   },
 
   created() {
-    this.$store.dispatch("movies/upcomingMovies");
+    const movie = this.$route.query.title;
+    if (movie) {
+      this.$store.dispatch("movies/searchMovies", movie);
+    }
   },
 
   destroyed() {
@@ -50,11 +52,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.upcoming {
+.search {
   min-height: calc(100vh - 9.625rem);
 
-  p {
-    font-size: 0.875em;
+  .movie-title {
+    font-size: 1.5em;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+
+  &-form {
+    text-align: end;
+  }
+
+  h2 {
+    font-size: 1em;
   }
 }
 </style>

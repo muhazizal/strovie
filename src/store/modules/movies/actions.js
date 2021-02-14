@@ -2,100 +2,102 @@ import axios from "@/assets/global/axios-config.js";
 import API_ENDPOINT from "@/assets/global/api-endpoint.js";
 
 export default {
-  async searchMovies({ commit }, movie) {
+  setLoading({ commit }) {
+    commit("SET_LOADING", false, { root: true });
+  },
+
+  setMoviesWithoutDate({ commit }, data) {
+    commit(`${data.mutations}`, {
+      page: data.movies.page,
+      items: data.movies.results,
+      totalPages: data.movies.total_pages,
+      totalResults: data.movies.total_results,
+    });
+  },
+
+  setMoviesWithDate({ commit }, data) {
+    commit(`${data.mutations}`, {
+      page: data.movies.page,
+      items: data.movies.results,
+      totalPages: data.movies.total_pages,
+      totalResults: data.movies.total_results,
+      dateMinimum: data.movies.dates.minimum,
+      dateMaximum: data.movies.dates.maximum,
+    });
+  },
+
+  async searchMovies({ dispatch }, movie) {
     try {
       const response = await axios.get(API_ENDPOINT.SEARCH_MOVIES(movie));
 
-      if (response.status === 200) {
-        commit("SET_SEARCH_MOVIES", {
-          items: response.data.results,
-          page: response.data.page,
-          totalPages: response.data.total_pages,
-          totalResults: response.data.total_results,
-        });
-      }
+      dispatch("setMoviesWithoutDate", {
+        mutations: "SET_SEARCH_MOVIES",
+        movies: response.data,
+      });
     } catch (error) {
       console.log(error);
     }
 
-    commit("SET_LOADING", false, { root: true });
+    dispatch("setLoading");
   },
 
-  async popularMovies({ commit }) {
+  async popularMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_POPULAR);
 
-      if (response.status === 200) {
-        commit("SET_POPULAR_MOVIES", {
-          page: response.data.page,
-          totalPages: response.data.total_pages,
-          totalResults: response.data.total_results,
-          items: response.data.results,
-        });
-      }
+      dispatch("setMoviesWithoutDate", {
+        mutations: "SET_POPULAR_MOVIES",
+        movies: response.data,
+      });
     } catch (error) {
       console.log(error);
     }
 
-    commit("SET_LOADING", false, { root: true });
+    dispatch("setLoading");
   },
 
-  async nowPlayingMovies({ commit }) {
+  async nowPlayingMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_NOW_PLAYING);
 
-      if (response.status === 200) {
-        commit("SET_NOW_PLAYING_MOVIES", {
-          page: response.data.page,
-          totalPages: response.data.total_pages,
-          totalResults: response.data.total_results,
-          items: response.data.results,
-          dates: response.data.dates,
-        });
-      }
+      dispatch("setMoviesWithDate", {
+        mutations: "SET_NOW_PLAYING_MOVIES",
+        movies: response.data,
+      });
     } catch (error) {
       console.log(error);
     }
 
-    commit("SET_LOADING", false, { root: true });
+    dispatch("setLoading");
   },
 
-  async upcomingMovies({ commit }) {
+  async upcomingMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_UPCOMING);
 
-      if (response.status === 200) {
-        commit("SET_UPCOMING_MOVIES", {
-          page: response.data.page,
-          totalPages: response.data.total_pages,
-          totalResults: response.data.total_results,
-          items: response.data.results,
-          dates: response.data.dates,
-        });
-      }
+      dispatch("setMoviesWithDate", {
+        mutations: "SET_UPCOMING_MOVIES",
+        movies: response.data,
+      });
     } catch (error) {
       console.log(error);
     }
 
-    commit("SET_LOADING", false, { root: true });
+    dispatch("setLoading");
   },
 
-  async topRatedMovies({ commit }) {
+  async topRatedMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_TOP_RATED);
 
-      if (response.status === 200) {
-        commit("SET_TOP_RATED_MOVIES", {
-          page: response.data.page,
-          totalPages: response.data.total_pages,
-          totalResults: response.data.total_results,
-          items: response.data.results,
-        });
-      }
+      dispatch("setMoviesWithoutDate", {
+        mutations: "SET_TOP_RATED_MOVIES",
+        movies: response.data,
+      });
     } catch (error) {
       console.log(error);
     }
 
-    commit("SET_LOADING", false, { root: true });
+    dispatch("setLoading");
   },
 };

@@ -2,7 +2,7 @@
   <div class="now-playing">
     <h2 class="mt-5 mb-1">Now Playing Movies</h2>
     <v-skeleton-loader v-if="loading" max-width="150" type="text"></v-skeleton-loader>
-    <p v-if="!loading" class="grey--text">{{ movies.dates.minimum }} - {{ movies.dates.maximum }}</p>
+    <p v-if="!loading" class="grey--text">{{ movies.dateMinimum }} - {{ movies.dateMaximum }}</p>
 
     <v-row>
       <v-col class="col-md-2">
@@ -17,7 +17,7 @@
 
 <script>
 import MovieList from "@/components/Movie/MovieList";
-import MovieFilters from "../components/Movie/MovieFilters.vue";
+import MovieFilters from "@/components/Movie/MovieFilters.vue";
 import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
@@ -28,7 +28,6 @@ export default {
     MovieFilters,
     MovieListSkeleton,
   },
-
   computed: {
     loading() {
       return this.$store.getters["getLoading"];

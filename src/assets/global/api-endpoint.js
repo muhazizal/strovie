@@ -6,6 +6,7 @@ const API_ENDPOINT = {
   GET_UPCOMING: `movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`,
   GET_TOP_RATED: `movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`,
   SEARCH_MOVIES: (query) => `search/movie?api_key=${API_KEY}&query=${query}`,
+  GET_MOVIE_DETAIL: (movieId) => `movie/${movieId}?api_key=${API_KEY}&language=en-US`,
 };
 
 export default API_ENDPOINT;

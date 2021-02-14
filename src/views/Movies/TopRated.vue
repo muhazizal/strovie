@@ -1,8 +1,6 @@
 <template>
-  <div class="search">
-    <p class="mt-5 mb-0 movie-title">{{ this.$route.query.title }}</p>
-    <h2>Search Results</h2>
-
+  <div class="top-rated">
+    <h2 class="my-5">Top Rated Movies</h2>
     <v-row>
       <v-col class="col-md-2">
         <MovieFilters :movies="movies" />
@@ -16,11 +14,11 @@
 
 <script>
 import MovieList from "@/components/Movie/MovieList";
-import MovieFilters from "@/components/Movie/MovieFilters";
+import MovieFilters from "@/components/Movie/MovieFilters.vue";
 import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
-  name: "Search",
+  name: "TopRated",
 
   components: {
     MovieList,
@@ -34,16 +32,12 @@ export default {
     },
 
     movies() {
-      return this.$store.getters["movies/getSearchMovies"];
+      return this.$store.getters["movies/getTopRatedMovies"];
     },
   },
 
   created() {
-    // fetch searched movie if the page reloaded
-    const movie = this.$route.query.title;
-    if (movie) {
-      this.$store.dispatch("movies/searchMovies", movie);
-    }
+    this.$store.dispatch("movies/topRatedMovies");
   },
 
   destroyed() {
@@ -53,21 +47,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.search {
+.top-rated {
   min-height: calc(100vh - 9.625rem);
-
-  .movie-title {
-    font-size: 1.5em;
-    font-weight: 300;
-    text-transform: uppercase;
-  }
-
-  &-form {
-    text-align: end;
-  }
-
-  h2 {
-    font-size: 1em;
-  }
 }
 </style>

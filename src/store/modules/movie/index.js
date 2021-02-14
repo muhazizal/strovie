@@ -5,11 +5,7 @@ import actions from "./actions";
 export default {
   namespaced: true,
   state: {
-    searchMovies: {},
-    popularMovies: {},
-    nowPlayingMovies: {},
-    upcomingMovies: {},
-    topRatedMovies: {},
+    movieDetail: {},
   },
   mutations,
   actions,

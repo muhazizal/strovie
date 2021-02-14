@@ -1,6 +1,9 @@
 <template>
-  <div class="top-rated">
-    <h2 class="my-5">Top Rated Movies</h2>
+  <div class="upcoming">
+    <h2 class="mt-5 mb-1">Upcoming Movies</h2>
+    <v-skeleton-loader v-if="loading" max-width="150" type="text"></v-skeleton-loader>
+    <p v-if="!loading" class="grey--text">{{ movies.dateMinimum }} - {{ movies.dateMaximum }}</p>
+
     <v-row>
       <v-col class="col-md-2">
         <MovieFilters :movies="movies" />
@@ -14,11 +17,11 @@
 
 <script>
 import MovieList from "@/components/Movie/MovieList";
-import MovieFilters from "../components/Movie/MovieFilters.vue";
+import MovieFilters from "@/components/Movie/MovieFilters.vue";
 import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
-  name: "TopRated",
+  name: "Upcoming",
 
   components: {
     MovieList,
@@ -32,12 +35,12 @@ export default {
     },
 
     movies() {
-      return this.$store.getters["movies/getTopRatedMovies"];
+      return this.$store.getters["movies/getUpcomingMovies"];
     },
   },
 
   created() {
-    this.$store.dispatch("movies/topRatedMovies");
+    this.$store.dispatch("movies/upcomingMovies");
   },
 
   destroyed() {
@@ -47,7 +50,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.top-rated {
+.upcoming {
   min-height: calc(100vh - 9.625rem);
+
+  p {
+    font-size: 0.875em;
+  }
 }
 </style>

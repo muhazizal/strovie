@@ -1,5 +1,5 @@
 <template>
-  <form class="d-flex justify-center" :class="inDrawer ? 'inDrawer' : ''" @submit.prevent>
+  <form class="d-flex justify-center" :class="inDrawer ? 'inDrawer' : ''" @submit.prevent="searchMovies">
     <v-theme-provider root>
       <v-text-field
         v-model="movie"
@@ -41,9 +41,11 @@ export default {
       }
 
       await this.$store.dispatch("movies/searchMovies", this.movie);
+
       router.push({ path: "/search", query: { title: this.movie } }).catch((error) => {
         return error;
       });
+
       this.$emit("toggleDrawer");
     },
   },
