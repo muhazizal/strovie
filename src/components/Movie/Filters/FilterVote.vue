@@ -25,18 +25,16 @@ export default {
 
   methods: {
     sortMoviesByVoteAscending() {
-      const moviePage = this.movies.page;
-      const movieItem = this.movies.items[moviePage - 1];
+      const movieItems = this.movies.items;
 
-      movieItem.sort((a, b) => a.vote_count - b.vote_count);
+      movieItems.sort((a, b) => a.vote_count - b.vote_count);
       this.ascending = false;
     },
 
     sortMoviesByVoteDescending() {
-      const moviePage = this.movies.page;
-      const movieItem = this.movies.items[moviePage - 1];
+      const movieItems = this.movies.items;
 
-      movieItem.sort((a, b) => b.vote_count - a.vote_count);
+      movieItems.sort((a, b) => b.vote_count - a.vote_count);
       this.ascending = true;
     },
   },

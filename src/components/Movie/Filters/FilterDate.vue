@@ -25,18 +25,16 @@ export default {
 
   methods: {
     sortMoviesByDateAscending() {
-      const moviePage = this.movies.page;
-      const movieItem = this.movies.items[moviePage - 1];
+      const movieItems = this.movies.items;
 
-      movieItem.sort((a, b) => a.release_date.localeCompare(b.release_date));
+      movieItems.sort((a, b) => a.release_date.localeCompare(b.release_date));
       this.ascending = false;
     },
 
     sortMoviesByDatedescending() {
-      const moviePage = this.movies.page;
-      const movieItem = this.movies.items[moviePage - 1];
+      const movieItems = this.movies.items;
 
-      movieItem.sort((a, b) => b.release_date.localeCompare(a.release_date));
+      movieItems.sort((a, b) => b.release_date.localeCompare(a.release_date));
       this.ascending = true;
     },
   },
