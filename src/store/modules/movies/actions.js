@@ -1,5 +1,5 @@
-import axios from "@/assets/global/axios-config.js";
-import API_ENDPOINT from "@/assets/global/api-endpoint.js";
+import axios from "@/plugins/axios-config.js";
+import API_ENDPOINT from "@/global/api-endpoint.js";
 
 export default {
   setLoading({ commit }) {

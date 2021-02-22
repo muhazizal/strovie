@@ -1,5 +1,5 @@
 <template>
-  <v-col class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-0 px-sm-3">
+  <v-col class="col-8 col-sm-6 col-md-4 col-lg-3 col-xl-2 px-0 px-sm-3">
     <router-link :to="`/movie/${movie.id}`" class="movie-link">
       <v-card class="mx-auto " width="100%" hover>
         <v-img
