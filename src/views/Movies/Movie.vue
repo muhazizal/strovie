@@ -1,11 +1,11 @@
 <template>
   <div class="movie">
     <v-row class="my-0 justify-center">
-      <v-col class="col-3">
+      <v-col class="col-12 col-md-3">
         <MoviePoster :movieDetail="movieDetail" />
       </v-col>
 
-      <v-col class="col-6">
+      <v-col class="col-12 col-md-6">
         <MovieData :movieDetail="movieDetail" />
       </v-col>
     </v-row>

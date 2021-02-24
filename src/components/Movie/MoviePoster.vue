@@ -1,9 +1,8 @@
 <template>
-  <v-card>
+  <v-card class="mx-auto">
     <v-img
       height="100%"
       width="100%"
-      contain
       :alt="movieDetail.title"
       :src="
         movieDetail.poster_path === null
@@ -34,3 +33,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.v-card {
+  max-width: 250px;
+}
+</style>
