@@ -47,8 +47,8 @@
         noreferer
         :small="$vuetify.breakpoint.xs"
       >
-        <v-icon left>mdi-netflix</v-icon>
-        Netflix
+        <v-icon left>mdi-web</v-icon>
+        Website
       </v-btn>
 
       <v-btn
@@ -56,24 +56,16 @@
         rounded
         outlined
         tag="a"
-        :href="`https://www.imdb.com/title/${movieDetail.homepage}`"
+        :href="`https://www.imdb.com/title/${movieDetail.imdb_id}`"
         :small="$vuetify.breakpoint.xs"
         target="_blank"
         noreferer
       >
-        <v-icon left>mdi-web</v-icon>
+        <v-icon left>mdi-star-circle</v-icon>
         IMDB
       </v-btn>
 
-      <v-btn
-        rounded
-        outlined
-        tag="a"
-        :href="`https://www.imdb.com/title/${movieDetail.homepage}`"
-        :small="$vuetify.breakpoint.xs"
-        target="_blank"
-        noreferer
-      >
+      <v-btn rounded outlined tag="a" href="" :small="$vuetify.breakpoint.xs" target="_blank" noreferer>
         <v-icon left>mdi-youtube</v-icon>
         Trailer
       </v-btn>
