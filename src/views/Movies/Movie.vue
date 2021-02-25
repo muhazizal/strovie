@@ -1,12 +1,12 @@
 <template>
   <div class="movie">
     <v-row class="my-0 justify-center">
-      <v-col class="col-12 col-md-3">
+      <v-col class="col-12 col-md-4 col-lg-3">
         <MoviePoster :movieDetail="movieDetail" />
       </v-col>
 
-      <v-col class="col-12 col-md-6">
-        <MovieData :movieDetail="movieDetail" />
+      <v-col class="col-12 col-md-8 col-lg-6 px-sm-7 px-md-3 d-flex align-center">
+        <MovieOverview :movieDetail="movieDetail" />
       </v-col>
     </v-row>
   </div>
@@ -14,26 +14,30 @@
 
 <script>
 import MoviePoster from "@/components/Movie/MoviePoster";
-import MovieData from "@/components/Movie/MovieData";
+import MovieOverview from "@/components/Movie/MovieOverview";
 
 export default {
   name: "Movie",
 
   components: {
     MoviePoster,
-    MovieData,
+    MovieOverview,
   },
 
   computed: {
     movieDetail() {
       return this.$store.getters["movie/getMovieDetail"];
     },
+    movieCredits() {
+      return this.$store.getters["movie/getMovieCredits"];
+    },
   },
 
-  created() {
+  async created() {
     const movieId = this.$route.params.id;
 
-    this.$store.dispatch("movie/movieDetail", movieId);
+    await this.$store.dispatch("movie/movieDetail", movieId);
+    await this.$store.dispatch("movie/movieCredits", movieId);
   },
 };
 </script>

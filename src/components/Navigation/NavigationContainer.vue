@@ -10,7 +10,7 @@ import NavigationBar from "./NavigationBar";
 import NavigationDrawer from "./NavigationDrawer";
 
 export default {
-  name: "Navigation",
+  name: "NavigationContainer",
 
   components: {
     NavigationBar,

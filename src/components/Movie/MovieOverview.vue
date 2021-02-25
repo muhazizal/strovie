@@ -1,6 +1,6 @@
 <template>
-  <div class="data">
-    <div class="data-header">
+  <div class="overview">
+    <div class="overview-header">
       <h3 class="header-title">{{ movieDetail.title }}</h3>
       <p class="header-tagline">{{ movieDetail.tagline }}</p>
       <p class="header-time mb-3">{{ movieDetail.release_date }} &bull; {{ convertedRuntime }}</p>
@@ -19,7 +19,7 @@
       </v-row>
     </div>
 
-    <div class="data-genres mt-6">
+    <div class="overview-genres mt-6">
       <h3 class="genres-title mb-1">Genres</h3>
 
       <div class="genres-container">
@@ -30,13 +30,13 @@
       </div>
     </div>
 
-    <div class="data-synopsis mt-4">
+    <div class="overview-synopsis mt-4">
       <h3 class="synopsis-title mb-1">Synopsis</h3>
 
       <p class="synopsis-caption">{{ movieDetail.overview }}</p>
     </div>
 
-    <div class="data-actions">
+    <div class="overview-actions">
       <v-btn
         class="mr-3"
         rounded
@@ -83,7 +83,7 @@
 
 <script>
 export default {
-  name: "MovieData",
+  name: "MovieOverview",
 
   props: {
     movieDetail: Object,

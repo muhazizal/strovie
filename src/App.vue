@@ -1,17 +1,19 @@
 <template>
   <v-app>
-    <Navigation />
+    <NavigationContainer />
+
     <v-main>
       <v-container class="py-0 px-4 px-sm-3">
         <router-view></router-view>
       </v-container>
     </v-main>
+
     <TheFooter />
   </v-app>
 </template>
 
 <script>
-import Navigation from "@/components/Navigation/Navigation.vue";
+import NavigationContainer from "@/components/Navigation/NavigationContainer.vue";
 import TheFooter from "@/components/TheFooter.vue";
 
 export default {
@@ -22,7 +24,7 @@ export default {
   }),
 
   components: {
-    Navigation,
+    NavigationContainer,
     TheFooter,
   },
 };

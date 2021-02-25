@@ -13,4 +13,18 @@ export default {
       console.log(error);
     }
   },
+
+  movieCredits: async ({ commit }, movieId) => {
+    try {
+      const response = await axios.get(API_ENDPOINT.GET_MOVIE_CREDITS(movieId));
+      console.log(response.data);
+
+      if (response.status === 200) {
+        console.log("success");
+        commit("SET_MOVIE_CREDITS", response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };

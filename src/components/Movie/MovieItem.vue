@@ -5,7 +5,6 @@
         <v-img
           height="100%"
           width="100%"
-          contain
           :alt="movie.title"
           :src="
             movie.poster_path === null

@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto">
+  <v-card class="mx-auto" width="100%">
     <v-img
       height="100%"
       width="100%"
@@ -36,6 +36,14 @@ export default {
 
 <style lang="scss" scoped>
 .v-card {
-  max-width: 250px;
+  max-width: 15.625rem;
+
+  @media screen and (min-width: 600px) {
+    max-width: 21.875rem;
+  }
+
+  @media screen and (min-width: 1904px) {
+    max-width: 25rem;
+  }
 }
 </style>
