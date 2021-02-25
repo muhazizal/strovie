@@ -7,6 +7,7 @@ export default {
   state: {
     movieDetail: {},
     movieCredits: {},
+    movieRecommendations: {},
   },
   mutations,
   actions,

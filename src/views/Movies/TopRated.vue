@@ -36,8 +36,9 @@ export default {
     },
   },
 
-  created() {
-    this.$store.dispatch("movies/topRatedMovies");
+  async created() {
+    await this.$store.dispatch("movies/topRatedMovies");
+    await this.$store.commit("SET_LOADING", false);
   },
 
   destroyed() {

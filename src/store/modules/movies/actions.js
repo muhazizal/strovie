@@ -2,10 +2,6 @@ import axios from "@/plugins/axios-config.js";
 import API_ENDPOINT from "@/global/api-endpoint.js";
 
 export default {
-  setLoading({ commit }) {
-    commit("SET_LOADING", false, { root: true });
-  },
-
   setMoviesWithoutDate({ commit }, data) {
     commit(`${data.mutations}`, {
       page: data.movies.page,
@@ -37,8 +33,6 @@ export default {
     } catch (error) {
       console.log(error);
     }
-
-    dispatch("setLoading");
   },
 
   async popularMovies({ dispatch }) {
@@ -52,8 +46,6 @@ export default {
     } catch (error) {
       console.log(error);
     }
-
-    dispatch("setLoading");
   },
 
   async nowPlayingMovies({ dispatch }) {
@@ -67,8 +59,6 @@ export default {
     } catch (error) {
       console.log(error);
     }
-
-    dispatch("setLoading");
   },
 
   async upcomingMovies({ dispatch }) {
@@ -82,8 +72,6 @@ export default {
     } catch (error) {
       console.log(error);
     }
-
-    dispatch("setLoading");
   },
 
   async topRatedMovies({ dispatch }) {
@@ -97,7 +85,5 @@ export default {
     } catch (error) {
       console.log(error);
     }
-
-    dispatch("setLoading");
   },
 };

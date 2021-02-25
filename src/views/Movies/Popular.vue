@@ -37,8 +37,9 @@ export default {
     },
   },
 
-  created() {
-    this.$store.dispatch("movies/popularMovies");
+  async created() {
+    await this.$store.dispatch("movies/popularMovies");
+    await this.$store.commit("SET_LOADING", false);
   },
 
   destroyed() {

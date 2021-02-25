@@ -38,10 +38,12 @@ export default {
     },
   },
 
-  created() {
+  async created() {
     const movie = this.$route.query.title;
+
     if (movie) {
-      this.$store.dispatch("movies/searchMovies", movie);
+      await this.$store.dispatch("movies/searchMovies", movie);
+      await this.$store.commit("SET_LOADING", false);
     }
   },
 

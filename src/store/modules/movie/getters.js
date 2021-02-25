@@ -6,4 +6,8 @@ export default {
   getMovieCredits(state) {
     return state.movieCredits;
   },
+
+  getMovieRecommendations(state) {
+    return state.movieRecommendations;
+  },
 };
