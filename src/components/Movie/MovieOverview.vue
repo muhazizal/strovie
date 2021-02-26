@@ -65,20 +65,23 @@
         IMDB
       </v-btn>
 
-      <v-btn rounded outlined tag="a" href="" :small="$vuetify.breakpoint.xs" target="_blank" noreferer>
-        <v-icon left>mdi-youtube</v-icon>
-        Trailer
-      </v-btn>
+      <MovieVideos v-if="movieVideos.results" :movieVideos="movieVideos" />
     </div>
   </div>
 </template>
 
 <script>
+import MovieVideos from "@/components/Movie/MovieVideos";
+
 export default {
   name: "MovieOverview",
 
   props: {
     movieDetail: Object,
+  },
+
+  components: {
+    MovieVideos,
   },
 
   computed: {
@@ -87,6 +90,18 @@ export default {
       const minutes = this.movieDetail.runtime % 60;
       return `${hours}h ${minutes}m`;
     },
+
+    movieVideos() {
+      return this.$store.getters["movie/getMovieVideos"];
+    },
+  },
+
+  async created() {
+    const movieId = this.$route.params.id;
+
+    if (movieId) {
+      await this.$store.dispatch("movie/movieVideos", movieId);
+    }
   },
 };
 </script>

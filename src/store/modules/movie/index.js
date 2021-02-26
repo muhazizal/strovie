@@ -8,6 +8,7 @@ export default {
     movieDetail: {},
     movieCredits: {},
     movieRecommendations: {},
+    movieVideos: {},
   },
   mutations,
   actions,

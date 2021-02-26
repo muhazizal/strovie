@@ -34,7 +34,6 @@ import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {
   name: "Movie",
-  title: "test",
 
   components: {
     MoviePoster,
@@ -64,6 +63,7 @@ export default {
     if (movieId) {
       await this.$store.dispatch("movie/movieDetail", movieId);
       await this.$store.dispatch("movie/movieRecommendations", movieId);
+
       await this.$store.commit("SET_LOADING", false);
     }
   },

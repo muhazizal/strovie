@@ -10,4 +10,8 @@ export default {
   getMovieRecommendations(state) {
     return state.movieRecommendations;
   },
+
+  getMovieVideos(state) {
+    return state.movieVideos;
+  },
 };
