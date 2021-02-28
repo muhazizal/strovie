@@ -6,7 +6,6 @@ export default {
   namespaced: true,
   state: {
     movieDetail: {},
-    movieCredits: {},
     movieRecommendations: {},
     movieVideos: {},
   },

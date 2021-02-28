@@ -3,10 +3,6 @@ export default {
     state.movieDetail = payload;
   },
 
-  SET_MOVIE_CREDITS(state, payload) {
-    state.movieCredits = payload;
-  },
-
   SET_MOVIE_RECOMMENDATIONS(state, payload) {
     state.movieRecommendations = payload;
   },

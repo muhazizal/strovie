@@ -1,7 +1,7 @@
 <template>
   <div class="movie">
-    <v-row class="my-0 justify-center">
-      <v-col class="col-12 col-md-4 col-lg-3 mt-3 d-flex align-center">
+    <v-row class="my-0 mt-3 justify-center">
+      <v-col class="col-12 col-md-4 col-lg-3  d-flex align-center">
         <MoviePoster :movieDetail="movieDetail" />
       </v-col>
 

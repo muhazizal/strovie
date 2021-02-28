@@ -3,10 +3,6 @@ export default {
     return state.movieDetail;
   },
 
-  getMovieCredits(state) {
-    return state.movieCredits;
-  },
-
   getMovieRecommendations(state) {
     return state.movieRecommendations;
   },
