@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="drawer" absolute temporary stateless width="100%">
+  <v-navigation-drawer v-model="drawer" app temporary stateless width="100%">
     <v-row class="ma-0">
       <v-icon class="ml-3 mt-4" @click="$emit('toggleDrawer')">
         mdi-close
