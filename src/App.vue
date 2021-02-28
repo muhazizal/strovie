@@ -4,7 +4,7 @@
 
     <v-main>
       <v-container class="py-0 px-4 px-sm-3">
-        <router-view></router-view>
+        <router-view :key="$route.path"></router-view>
       </v-container>
     </v-main>
 

@@ -135,7 +135,6 @@ export default {
     font-size: 0.875em;
     line-height: 1.75em;
     word-break: break-word;
-    text-align: justify;
   }
 }
 </style>

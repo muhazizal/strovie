@@ -45,7 +45,16 @@ export default {
 
   computed: {
     videoKey() {
-      return this.movieVideos.results[1].key;
+      let videoKey = "";
+      const videoList = this.movieVideos.results;
+
+      videoList.forEach((video) => {
+        if (video.type === "Trailer") {
+          videoKey = video.key;
+        }
+      });
+
+      return videoKey;
     },
 
     // eslint-disable-next-line vue/return-in-computed-property
