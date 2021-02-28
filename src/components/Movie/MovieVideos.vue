@@ -1,13 +1,14 @@
 <template>
-  <div class="videos text-center">
+  <div class="videos text-center d-inline-block">
     <v-dialog v-model="dialog" width="fit-content" persistent no-click-animation>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
-          {{ videoKey }}
+        <v-btn rounded outlined :small="$vuetify.breakpoint.xs" v-bind="attrs" v-on="on">
+          <v-icon left>mdi-youtube</v-icon>
+          Trailer
         </v-btn>
       </template>
 
-      <v-card>
+      <v-card class="black">
         <div class="videos-container">
           <youtube
             :video-id="videoKey"
@@ -18,8 +19,8 @@
           </youtube>
         </div>
 
-        <v-card-actions class="justify-end pt-0 transparent">
-          <v-btn color="default" text @click="buttonClose">
+        <v-card-actions class="justify-end pt-0 black">
+          <v-btn color="default" class="white--text" text @click="buttonClose">
             Close
           </v-btn>
         </v-card-actions>
@@ -82,10 +83,8 @@ export default {
 
   methods: {
     buttonClose() {
-      const dialogContent = document.querySelector(".v-dialog__content");
-      console.log(dialogContent);
       this.dialog = false;
-      this.plater.stopVideo();
+      this.player.stopVideo();
     },
   },
 };
