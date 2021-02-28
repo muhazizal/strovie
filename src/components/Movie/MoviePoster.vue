@@ -21,6 +21,8 @@
         </v-row>
       </template>
     </v-img>
+
+    <slot name="movie-item"></slot>
   </v-card>
 </template>
 

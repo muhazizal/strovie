@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import MovieList from "@/components/Movie/MovieList";
 import MovieFilters from "@/components/Movie/MovieFilters";
+import MovieList from "@/components/Movie/MovieList";
 import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
 
 export default {

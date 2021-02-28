@@ -15,6 +15,6 @@
 
 <script>
 export default {
-  name: "MovieItemSekelton",
+  name: "MovieListSkeleton",
 };
 </script>

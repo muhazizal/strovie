@@ -1,13 +1,13 @@
 <template>
   <v-col class="col-12 col-md-10">
     <v-row class="ma-0 mb-5 justify-center justify-sm-start" v-if="movies.items">
-      <MovieItem v-for="movie in movies.items" :key="movie.id" :movie="movie" />
+      <MovieListItem v-for="movie in movies.items" :key="movie.id" :movie="movie" />
     </v-row>
   </v-col>
 </template>
 
 <script>
-import MovieItem from "./MovieItem";
+import MovieListItem from "./MovieListItem";
 
 export default {
   name: "MovieList",
@@ -17,7 +17,7 @@ export default {
   },
 
   components: {
-    MovieItem,
+    MovieListItem,
   },
 };
 </script>
