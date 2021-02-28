@@ -2,11 +2,13 @@
   <div class="movie">
     <v-row class="my-0 mt-3 justify-center">
       <v-col class="col-12 col-md-4 col-lg-3  d-flex align-center">
-        <MoviePoster :movieDetail="movieDetail" />
+        <MoviePosterSkeleton v-if="loading" />
+        <MoviePoster v-if="!loading" :movieDetail="movieDetail" />
       </v-col>
 
       <v-col class="col-12 col-md-8 col-lg-6 px-sm-7 px-md-3 d-flex align-center mt-5 mt-md-0">
-        <MovieOverview :movieDetail="movieDetail" />
+        <MovieOverviewSkeleton v-if="loading" />
+        <MovieOverview v-if="!loading" :movieDetail="movieDetail" />
       </v-col>
     </v-row>
 
@@ -31,6 +33,8 @@ import MovieOverview from "@/components/Movie/MovieOverview";
 import MovieList from "@/components/Movie/MovieList";
 import MovieFilters from "@/components/Movie/MovieFilters.vue";
 import MovieListSkeleton from "@/components/Movie/MovieListSkeleton";
+import MoviePosterSkeleton from "@/components/Movie/MoviePosterSkeleton";
+import MovieOverviewSkeleton from "@/components/Movie/MovieOverviewSkeleton";
 
 export default {
   name: "Movie",
@@ -41,6 +45,8 @@ export default {
     MovieList,
     MovieFilters,
     MovieListSkeleton,
+    MoviePosterSkeleton,
+    MovieOverviewSkeleton,
   },
 
   computed: {
