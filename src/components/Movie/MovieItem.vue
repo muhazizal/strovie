@@ -69,10 +69,12 @@ export default {
   &__title {
     font-size: 0.875em;
     line-height: 1.25rem;
+    word-break: break-word;
   }
 
   &__text {
     font-size: 0.75em;
+    font-weight: 500;
   }
 
   &:hover {

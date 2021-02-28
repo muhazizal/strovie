@@ -110,11 +110,11 @@ export default {
 .header {
   &-title {
     font-size: 1.5em;
+    word-break: break-word;
   }
 
   &-rating {
     font-size: 0.813em;
-    font-weight: 500;
     padding-top: 0.25rem;
   }
 }
@@ -134,6 +134,8 @@ export default {
   &-caption {
     font-size: 0.875em;
     line-height: 1.75em;
+    word-break: break-word;
+    text-align: justify;
   }
 }
 </style>
