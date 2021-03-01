@@ -5,7 +5,6 @@ export default {
   async movieDetail({ commit }, movieId) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_MOVIE_DETAIL(movieId));
-      console.log(response);
 
       if (response.status === 200) {
         commit("SET_MOVIE_DETAIL", response.data);
