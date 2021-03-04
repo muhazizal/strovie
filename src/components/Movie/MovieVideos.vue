@@ -2,7 +2,7 @@
   <div class="videos text-center d-inline-block">
     <v-dialog v-model="dialog" width="fit-content" persistent no-click-animation>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn rounded outlined :small="$vuetify.breakpoint.xs" v-bind="attrs" v-on="on">
+        <v-btn class="mb-3 mb-md-0" rounded outlined :small="$vuetify.breakpoint.xs" v-bind="attrs" v-on="on">
           <v-icon left>mdi-youtube</v-icon>
           Trailer
         </v-btn>

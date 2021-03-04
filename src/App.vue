@@ -3,7 +3,7 @@
     <NavigationContainer />
 
     <v-main>
-      <v-container class="py-0 px-4 px-sm-3">
+      <v-container class="py-0 px-4 px-sm-7 px-md-3">
         <router-view :key="$route.path"></router-view>
       </v-container>
     </v-main>

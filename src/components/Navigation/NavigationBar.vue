@@ -10,8 +10,8 @@
           <v-app-bar-nav-icon @click="$emit('toggleDrawer')" class="d-md-none"></v-app-bar-nav-icon>
         </v-col>
 
-        <v-col class="col-md-10 d-none d-md-block">
-          <v-row class="d-flex align-center ma-3">
+        <v-col class="col-md-10 d-none d-md-block pa-0">
+          <v-row class="d-flex align-center my-3 ml-3 mr-0 pr-xl-14 pl-md-3">
             <FormSearchMovie class="d-none d-md-block" />
 
             <v-spacer></v-spacer>

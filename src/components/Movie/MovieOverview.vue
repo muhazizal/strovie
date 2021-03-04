@@ -22,23 +22,23 @@
     <div class="overview-genres mt-6">
       <h3 class="genres-title mb-1">Genres</h3>
 
-      <div class="genres-container">
-        <v-chip class="genres-item" v-for="genre in movieDetail.genres" :key="genre.id" label outlined small>
+      <div class="genres-container d-flex flex-wrap">
+        <v-chip class="genres-item mr-3 mb-3" v-for="genre in movieDetail.genres" :key="genre.id" label outlined small>
           <v-icon left small>mdi-play-circle</v-icon>
           {{ genre.name }}
         </v-chip>
       </div>
     </div>
 
-    <div class="overview-synopsis mt-4">
+    <div class="overview-synopsis mt-1">
       <h3 class="synopsis-title mb-1">Synopsis</h3>
 
-      <p class="synopsis-caption">{{ movieDetail.overview }}</p>
+      <p class="synopsis-caption mb-5">{{ movieDetail.overview }}</p>
     </div>
 
-    <div class="overview-actions">
+    <div class="overview-actions d-flex flex-wrap mb-n3 mb-md-0">
       <v-btn
-        class="mr-3"
+        class="mr-3 mb-3 mb-md-0"
         rounded
         outlined
         tag="a"
@@ -52,7 +52,7 @@
       </v-btn>
 
       <v-btn
-        class="mr-3"
+        class="mr-3 mb-3 mb-md-0"
         rounded
         outlined
         tag="a"
@@ -116,17 +116,6 @@ export default {
   &-rating {
     font-size: 0.813em;
     padding-top: 0.25rem;
-  }
-}
-
-.genres {
-  &-container {
-    display: flex;
-  }
-
-  &-item {
-    padding: 0 0.75rem;
-    margin-right: 0.75rem;
   }
 }
 
