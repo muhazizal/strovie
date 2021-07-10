@@ -32,52 +32,60 @@ export default {
       console.log(error);
     }
   },
-  async popularMovies({ dispatch }) {
+  async popularMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_POPULAR);
+      const response = await axios.get(API_ENDPOINT.GET_POPULAR(page));
 
       dispatch("setMoviesWithoutDate", {
         mutations: "SET_POPULAR_MOVIES",
         movies: response.data,
       });
+
+      onSuccess && onSuccess(response.data);
     } catch (error) {
-      console.log(error);
+      onFail && onFail(error);
     }
   },
-  async nowPlayingMovies({ dispatch }) {
+  async nowPlayingMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_NOW_PLAYING);
+      const response = await axios.get(API_ENDPOINT.GET_NOW_PLAYING(page));
 
       dispatch("setMoviesWithDate", {
         mutations: "SET_NOW_PLAYING_MOVIES",
         movies: response.data,
       });
+
+      onSuccess && onSuccess(response.data);
     } catch (error) {
-      console.log(error);
+      onFail && onFail(error);
     }
   },
-  async upcomingMovies({ dispatch }) {
+  async upcomingMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_UPCOMING);
+      const response = await axios.get(API_ENDPOINT.GET_UPCOMING(page));
 
       dispatch("setMoviesWithDate", {
         mutations: "SET_UPCOMING_MOVIES",
         movies: response.data,
       });
+
+      onSuccess && onSuccess(response.data);
     } catch (error) {
-      console.log(error);
+      onFail && onFail(error);
     }
   },
-  async topRatedMovies({ dispatch }) {
+  async topRatedMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_TOP_RATED);
+      const response = await axios.get(API_ENDPOINT.GET_TOP_RATED(page));
 
       dispatch("setMoviesWithoutDate", {
         mutations: "SET_TOP_RATED_MOVIES",
         movies: response.data,
       });
+
+      onSuccess && onSuccess(response.data);
     } catch (error) {
-      console.log(error);
+      onFail && onFail(error);
     }
   },
 };

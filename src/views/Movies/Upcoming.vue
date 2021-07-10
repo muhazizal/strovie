@@ -8,17 +8,28 @@
         <movie-filters :movies="movies" />
       </v-col>
       <movie-list-skeleton v-if="loading" />
-      <movie-list v-if="!loading" :movies="movies" />
+      <movie-list v-if="!loading" :movies="movies">
+        <template v-slot:loading v-if="isBottomVisible">
+          <v-progress-circular indeterminate color="primary" class="mx-auto my-3" />
+        </template>
+      </movie-list>
     </v-row>
   </div>
 </template>
 <script>
+import { bottomVisible } from "@/utils/scroll.js";
 export default {
   name: "Upcoming",
   components: {
     MovieList: () => import("@/components/Movie/MovieList"),
     MovieFilters: () => import("@/components/Movie/MovieFilters.vue"),
     MovieListSkeleton: () => import("@/components/Movie/MovieListSkeleton"),
+  },
+  data() {
+    return {
+      page: 1,
+      isBottomVisible: false,
+    };
   },
   computed: {
     loading() {
@@ -28,12 +39,42 @@ export default {
       return this.$store.getters["movies/getUpcomingMovies"];
     },
   },
+  watch: {
+    async isBottomVisible(isBottomVisible) {
+      if (isBottomVisible) {
+        this.page += 1;
+        await this.handleGetUpcomingMovies();
+      }
+    },
+  },
   async created() {
-    await this.$store.dispatch("movies/upcomingMovies");
-    await this.$store.commit("SET_LOADING", false);
+    this.handleInfiniteScroll();
+    await this.handleGetUpcomingMovies();
   },
   destroyed() {
     this.$store.commit("SET_LOADING", true);
+  },
+  methods: {
+    handleInfiniteScroll() {
+      window.addEventListener("scroll", () => {
+        this.isBottomVisible = bottomVisible();
+      });
+    },
+    async handleGetUpcomingMovies() {
+      const params = {
+        page: this.page,
+        onSuccess: (data) => this.handleOnSuccessGetUpcomingMovies(data),
+        onFail: (error) => this.handleOnFailGetUpcomingMovies(error),
+      };
+      await this.$store.dispatch("movies/upcomingMovies", params);
+    },
+    async handleOnSuccessGetUpcomingMovies() {
+      await this.$store.commit("SET_LOADING", false);
+    },
+    async handleOnFailGetUpcomingMovies(error) {
+      await this.$store.commit("SET_LOADING", false);
+      console.log(error);
+    },
   },
 };
 </script>
