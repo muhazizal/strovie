@@ -1,8 +1,16 @@
 import { uniqBy } from "lodash";
 
 export default {
-  SET_SEARCH_MOVIES(state, movies) {
-    state.searchMovies = movies;
+  SET_SEARCH_MOVIES(state, payload) {
+    if (payload.page === 1) {
+      state.searchMovies = payload;
+    } else {
+      state.searchMovies.page = payload.page;
+      state.searchMovies.items = state.searchMovies.items.concat(payload.items);
+      state.searchMovies.items = uniqBy(state.searchMovies.items, "id");
+      state.searchMovies.totalPages = payload.totalPages;
+      state.searchMovies.totalResults = payload.totalResults;
+    }
   },
   SET_POPULAR_MOVIES(state, payload) {
     if (payload.page === 1) {

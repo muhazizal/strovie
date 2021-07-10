@@ -20,16 +20,18 @@ export default {
       dateMaximum: data.movies.dates.maximum,
     });
   },
-  async searchMovies({ dispatch }, movie) {
+  async searchMovies({ dispatch }, { query, page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.SEARCH_MOVIES(movie));
+      const response = await axios.get(API_ENDPOINT.SEARCH_MOVIES(query, page));
 
       dispatch("setMoviesWithoutDate", {
         mutations: "SET_SEARCH_MOVIES",
         movies: response.data,
       });
+
+      onSuccess && onSuccess(response.data);
     } catch (error) {
-      console.log(error);
+      onFail && onFail(error);
     }
   },
   async popularMovies({ dispatch }, { page, onSuccess, onFail }) {
