@@ -9,7 +9,7 @@
       </v-col>
       <movie-list-skeleton v-if="loading" />
       <movie-list v-if="!loading" :movies="movies">
-        <template v-slot:loading v-if="isBottomVisible">
+        <template v-slot:loading v-if="isBottomVisible && this.page < this.totalPages">
           <v-progress-circular indeterminate color="primary" class="mx-auto my-3" />
         </template>
       </movie-list>
@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       page: 1,
+      totalPages: 0,
       isBottomVisible: false,
     };
   },
@@ -41,7 +42,7 @@ export default {
   },
   watch: {
     async isBottomVisible(isBottomVisible) {
-      if (isBottomVisible) {
+      if (isBottomVisible && this.page < this.totalPages) {
         this.page += 1;
         await this.handleGetUpcomingMovies();
       }
@@ -68,7 +69,8 @@ export default {
       };
       await this.$store.dispatch("movies/upcomingMovies", params);
     },
-    async handleOnSuccessGetUpcomingMovies() {
+    async handleOnSuccessGetUpcomingMovies(data) {
+      this.totalPages = data.total_pages;
       await this.$store.commit("SET_LOADING", false);
     },
     async handleOnFailGetUpcomingMovies(error) {

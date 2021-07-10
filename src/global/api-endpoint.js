@@ -9,7 +9,8 @@ const API_ENDPOINT = {
   SEARCH_MOVIES: (query, page) => `search/movie?api_key=${API_KEY}&query=${query}&page=${page}`,
   GET_MOVIE_DETAIL: (movieId) => `movie/${movieId}?api_key=${API_KEY}&language=en-US`,
   GET_MOVIE_CREDITS: (movieId) => `movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`,
-  GET_MOVIE_RECOMMENDATIONS: (movieId) => `movie/${movieId}/recommendations?api_key=${API_KEY}&language=en-US`,
+  GET_MOVIE_RECOMMENDATIONS: (movieId, page) =>
+    `movie/${movieId}/recommendations?api_key=${API_KEY}&language=en-US&page=${page}`,
   GET_MOVIE_VIDEOS: (movieId) => `movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`,
 };
 

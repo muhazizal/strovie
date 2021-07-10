@@ -13,9 +13,9 @@ export default {
       console.log(error);
     }
   },
-  movieRecommendations: async ({ commit }, movieId) => {
+  movieRecommendations: async ({ commit }, { movieId, page, onSuccess, onFail }) => {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_MOVIE_RECOMMENDATIONS(movieId));
+      const response = await axios.get(API_ENDPOINT.GET_MOVIE_RECOMMENDATIONS(movieId, page));
 
       if (response.status === 200) {
         commit("SET_MOVIE_RECOMMENDATIONS", {
@@ -24,9 +24,11 @@ export default {
           totalPages: response.data.total_pages,
           totalResults: response.data.total_results,
         });
+
+        onSuccess && onSuccess(response.data);
       }
     } catch (error) {
-      console.log(error);
+      onFail && onFail(error);
     }
   },
   movieVideos: async ({ commit }, movieId) => {

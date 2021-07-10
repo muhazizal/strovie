@@ -18,11 +18,16 @@
         <movie-filters :movies="movieRecommendations" />
       </v-col>
       <movie-list-skeleton v-if="loading" />
-      <movie-list v-if="!loading" :movies="movieRecommendations" />
+      <movie-list v-if="!loading" :movies="movieRecommendations">
+        <template v-slot:loading v-if="isBottomVisible && this.page < this.totalPages">
+          <v-progress-circular indeterminate color="primary" class="mx-auto my-3" />
+        </template>
+      </movie-list>
     </v-row>
   </div>
 </template>
 <script>
+import { bottomVisible } from "@/utils/scroll.js";
 export default {
   name: "Movie",
   components: {
@@ -33,6 +38,14 @@ export default {
     MovieListSkeleton: () => import("@/components/Movie/MovieListSkeleton"),
     MoviePosterSkeleton: () => import("@/components/Movie/MoviePosterSkeleton"),
     MovieOverviewSkeleton: () => import("@/components/Movie/MovieOverviewSkeleton"),
+  },
+  data() {
+    return {
+      movieId: "",
+      page: 1,
+      totalPages: 0,
+      isBottomVisible: false,
+    };
   },
   computed: {
     loading() {
@@ -45,17 +58,49 @@ export default {
       return this.$store.getters["movie/getMovieRecommendations"];
     },
   },
+  watch: {
+    async isBottomVisible(isBottomVisible) {
+      if (isBottomVisible && this.page < this.totalPages) {
+        this.page += 1;
+        await this.handleGetRecommendationsMovies(this.movieId);
+      }
+    },
+  },
   async created() {
-    const movieId = this.$route.params.id;
+    this.handleInfiniteScroll();
+    this.movieId = this.$route.params.id;
 
-    if (movieId) {
-      await this.$store.dispatch("movie/movieDetail", movieId);
-      await this.$store.dispatch("movie/movieRecommendations", movieId);
-      await this.$store.commit("SET_LOADING", false);
+    if (this.movieId) {
+      await this.$store.dispatch("movie/movieDetail", this.movieId);
+      await this.handleGetRecommendationsMovies(this.movieId);
     }
   },
   destroyed() {
     this.$store.commit("SET_LOADING", true);
+  },
+  methods: {
+    handleInfiniteScroll() {
+      window.addEventListener("scroll", () => {
+        this.isBottomVisible = bottomVisible();
+      });
+    },
+    async handleGetRecommendationsMovies(movieId) {
+      const params = {
+        movieId,
+        page: this.page,
+        onSuccess: (data) => this.handleOnSuccessGetRecommendationsMovies(data),
+        onFail: (error) => this.handleOnFailGetRecommendationsMovies(error),
+      };
+      await this.$store.dispatch("movie/movieRecommendations", params);
+    },
+    async handleOnSuccessGetRecommendationsMovies(data) {
+      this.totalPages = data.total_pages;
+      await this.$store.commit("SET_LOADING", false);
+    },
+    async handleOnFailGetRecommendationsMovies(error) {
+      await this.$store.commit("SET_LOADING", false);
+      console.log(error);
+    },
   },
 };
 </script>
