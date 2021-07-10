@@ -7,7 +7,6 @@
           Trailer
         </v-btn>
       </template>
-
       <v-card class="black">
         <div class="videos-container">
           <youtube
@@ -18,7 +17,6 @@
           >
           </youtube>
         </div>
-
         <v-card-actions class="justify-end pt-0 black">
           <v-btn color="default" class="white--text" text @click="buttonClose">
             Close
@@ -28,21 +26,17 @@
     </v-dialog>
   </div>
 </template>
-
 <script>
 export default {
   name: "MovieVideos",
-
   props: {
     movieVideos: Object,
   },
-
   data() {
     return {
       dialog: false,
     };
   },
-
   computed: {
     videoKey() {
       let videoKey = "";
@@ -56,7 +50,6 @@ export default {
 
       return videoKey;
     },
-
     // eslint-disable-next-line vue/return-in-computed-property
     playerWidth() {
       switch (this.$vuetify.breakpoint.name) {
@@ -72,7 +65,6 @@ export default {
           return 1366;
       }
     },
-
     // eslint-disable-next-line vue/return-in-computed-property
     playerHeight() {
       switch (this.$vuetify.breakpoint.name) {
@@ -89,7 +81,6 @@ export default {
       }
     },
   },
-
   methods: {
     buttonClose() {
       this.dialog = false;
@@ -98,7 +89,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss">
 .videos-container {
   width: 100%;

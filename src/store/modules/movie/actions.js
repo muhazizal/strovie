@@ -13,7 +13,6 @@ export default {
       console.log(error);
     }
   },
-
   movieRecommendations: async ({ commit }, movieId) => {
     try {
       const response = await axios.get(API_ENDPOINT.GET_MOVIE_RECOMMENDATIONS(movieId));
@@ -30,7 +29,6 @@ export default {
       console.log(error);
     }
   },
-
   movieVideos: async ({ commit }, movieId) => {
     try {
       const response = await axios.get(API_ENDPOINT.GET_MOVIE_VIDEOS(movieId));

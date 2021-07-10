@@ -10,7 +10,6 @@ export default {
       totalResults: data.movies.total_results,
     });
   },
-
   setMoviesWithDate({ commit }, data) {
     commit(`${data.mutations}`, {
       page: data.movies.page,
@@ -21,7 +20,6 @@ export default {
       dateMaximum: data.movies.dates.maximum,
     });
   },
-
   async searchMovies({ dispatch }, movie) {
     try {
       const response = await axios.get(API_ENDPOINT.SEARCH_MOVIES(movie));
@@ -34,7 +32,6 @@ export default {
       console.log(error);
     }
   },
-
   async popularMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_POPULAR);
@@ -47,7 +44,6 @@ export default {
       console.log(error);
     }
   },
-
   async nowPlayingMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_NOW_PLAYING);
@@ -60,7 +56,6 @@ export default {
       console.log(error);
     }
   },
-
   async upcomingMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_UPCOMING);
@@ -73,7 +68,6 @@ export default {
       console.log(error);
     }
   },
-
   async topRatedMovies({ dispatch }) {
     try {
       const response = await axios.get(API_ENDPOINT.GET_TOP_RATED);

@@ -1,11 +1,9 @@
 <template>
-  <v-skeleton-loader class="mx-auto" width="100%" :max-width="maxWidth" :type="imageType"></v-skeleton-loader>
+  <v-skeleton-loader class="mx-auto" width="100%" :max-width="maxWidth" :type="imageType" />
 </template>
-
 <script>
 export default {
   name: "MoviePosterSkeleton",
-
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
     maxWidth() {
@@ -22,7 +20,6 @@ export default {
           return 400;
       }
     },
-
     // eslint-disable-next-line vue/return-in-computed-property
     imageType() {
       switch (this.$vuetify.breakpoint.name) {

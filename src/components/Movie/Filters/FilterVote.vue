@@ -1,28 +1,24 @@
 <template>
   <div class="filter-vote">
     <v-btn text small @click="ascending ? sortMoviesByVoteAscending() : sortMoviesByVoteDescending()">
-      <v-icon left dark>
+      <v-icon left dark small>
         {{ ascending ? "mdi-sort-numeric-descending-variant" : "mdi-sort-numeric-ascending-variant" }}
       </v-icon>
       Sort By Vote
     </v-btn>
   </div>
 </template>
-
 <script>
 export default {
   name: "FilterVote",
-
   data() {
     return {
       ascending: false,
     };
   },
-
   props: {
     movies: Object,
   },
-
   methods: {
     sortMoviesByVoteAscending() {
       const movieItems = this.movies.items;
@@ -30,7 +26,6 @@ export default {
       movieItems.sort((a, b) => a.vote_count - b.vote_count);
       this.ascending = false;
     },
-
     sortMoviesByVoteDescending() {
       const movieItems = this.movies.items;
 
@@ -40,5 +35,4 @@ export default {
   },
 };
 </script>
-
 <style scoped></style>

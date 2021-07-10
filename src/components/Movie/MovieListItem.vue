@@ -4,11 +4,9 @@
       <movie-poster :movieDetail="movie">
         <template v-slot:movie-item>
           <v-card-title class="pb-1 font-weight-bold">{{ movie.title }}</v-card-title>
-
           <v-card-text class="pb-0">
             {{ movie.release_date }}
           </v-card-text>
-
           <v-card-text>
             <v-row class="mx-0">
               <v-rating
@@ -19,8 +17,7 @@
                 half-increments
                 readonly
                 size="14"
-              ></v-rating>
-
+              />
               <div class="rating ml-4">{{ movie.vote_average }} ({{ movie.vote_count }})</div>
             </v-row>
           </v-card-text>
@@ -29,49 +26,39 @@
     </router-link>
   </v-col>
 </template>
-
 <script>
-import MoviePoster from "./MoviePoster";
-
 export default {
   name: "MovieListItem",
-
   props: {
     movie: Object,
   },
-
   components: {
-    MoviePoster,
+    MoviePoster: () => import("./MoviePoster.vue"),
   },
 };
 </script>
-
 <style lang="scss" scoped>
 .movie-link {
   text-decoration: none;
 }
-
 .v-card {
+  transition: box-shadow 0.5s;
   &__title {
     font-size: 0.875em;
     line-height: 1.25rem;
     word-break: break-word;
   }
-
   &__text {
     font-size: 0.75em;
     font-weight: 500;
   }
-
   &:hover {
-    box-shadow: 0px 0px 15px 2px lightgrey !important;
+    box-shadow: 0px 0px 15px 3px lightgrey !important;
   }
-
   .rating {
     font-weight: 500;
     padding-top: 0.125rem;
   }
-
   .v-image {
     min-height: 18.75rem;
   }

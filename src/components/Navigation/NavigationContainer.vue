@@ -1,22 +1,16 @@
 <template>
   <div>
-    <NavigationBar @toggleDrawer="drawer = !drawer" :movies="movies" />
-    <NavigationDrawer @toggleDrawer="drawer = !drawer" :drawer="drawer" :movies="movies" />
+    <navigation-bar @toggleDrawer="drawer = !drawer" :movies="movies" />
+    <navigation-drawer @toggleDrawer="drawer = !drawer" :drawer="drawer" :movies="movies" />
   </div>
 </template>
-
 <script>
-import NavigationBar from "./NavigationBar";
-import NavigationDrawer from "./NavigationDrawer";
-
 export default {
   name: "NavigationContainer",
-
   components: {
-    NavigationBar,
-    NavigationDrawer,
+    NavigationBar: () => import("./NavigationBar"),
+    NavigationDrawer: () => import("./NavigationDrawer"),
   },
-
   data: () => ({
     drawer: null,
     movies: [
@@ -28,7 +22,6 @@ export default {
   }),
 };
 </script>
-
 <style lang="scss">
 .v-list-item.theme--dark:hover {
   border-bottom: 1px solid $primary-dark;

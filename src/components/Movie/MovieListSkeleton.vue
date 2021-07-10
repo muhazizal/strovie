@@ -7,12 +7,11 @@
           max-width="300"
           type="image, list-item-two-line, list-item"
           elevation="1"
-        ></v-skeleton-loader>
+        />
       </v-col>
     </v-row>
   </v-col>
 </template>
-
 <script>
 export default {
   name: "MovieListSkeleton",

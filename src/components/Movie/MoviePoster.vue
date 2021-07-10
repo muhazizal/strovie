@@ -21,29 +21,23 @@
         </v-row>
       </template>
     </v-img>
-
     <slot name="movie-item"></slot>
   </v-card>
 </template>
-
 <script>
 export default {
   name: "MoviePoster",
-
   props: {
     movieDetail: Object,
   },
 };
 </script>
-
 <style lang="scss" scoped>
 .v-card {
   max-width: 15.625rem;
-
   @media screen and (min-width: 600px) {
     max-width: 21.875rem;
   }
-
   @media screen and (min-width: 1904px) {
     max-width: 25rem;
   }
