@@ -27,11 +27,11 @@
                 </router-link>
               </v-list>
             </v-menu>
-            <router-link to="/favorites" class="text-decoration-none d-none d-md-inline-flex">
+            <!-- <router-link to="/favorites" class="text-decoration-none d-none d-md-inline-flex">
               <v-btn text class="mr-3">
                 Favorites
               </v-btn>
-            </router-link>
+            </router-link> -->
             <v-switch v-model="$vuetify.theme.dark" inset hide-details class="ml-3 d-none d-md-flex"></v-switch>
           </v-row>
         </v-col>
@@ -41,12 +41,12 @@
 </template>
 <script>
 export default {
-  name: "NavigationBar",
+  name: 'NavigationBar',
   components: {
-    FormSearch: () => import("@/components/Form/FormSearch.vue"),
+    FormSearch: () => import('@/components/Form/FormSearch.vue'),
   },
   props: {
     movies: Array,
   },
-};
+}
 </script>

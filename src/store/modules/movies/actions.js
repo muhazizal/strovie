@@ -1,5 +1,5 @@
-import axios from "@/plugins/axios-config.js";
-import API_ENDPOINT from "@/global/api-endpoint.js";
+import axios from '@/plugins/axios-config.js'
+import API_ENDPOINT from '@/global/api-endpoint.js'
 
 export default {
   setMoviesWithoutDate({ commit }, data) {
@@ -8,7 +8,7 @@ export default {
       items: data.movies.results,
       totalPages: data.movies.total_pages,
       totalResults: data.movies.total_results,
-    });
+    })
   },
   setMoviesWithDate({ commit }, data) {
     commit(`${data.mutations}`, {
@@ -18,76 +18,78 @@ export default {
       totalResults: data.movies.total_results,
       dateMinimum: data.movies.dates.minimum,
       dateMaximum: data.movies.dates.maximum,
-    });
+    })
   },
   async searchMovies({ dispatch }, { query, page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.SEARCH_MOVIES(query, page));
+      const response = await axios.get(API_ENDPOINT.SEARCH_MOVIES(query, page))
 
-      dispatch("setMoviesWithoutDate", {
-        mutations: "SET_SEARCH_MOVIES",
+      console.log(response)
+
+      dispatch('setMoviesWithoutDate', {
+        mutations: 'SET_SEARCH_MOVIES',
         movies: response.data,
-      });
+      })
 
-      onSuccess && onSuccess(response.data);
+      onSuccess && onSuccess(response.data)
     } catch (error) {
-      onFail && onFail(error);
+      onFail && onFail(error)
     }
   },
   async popularMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_POPULAR(page));
+      const response = await axios.get(API_ENDPOINT.GET_POPULAR(page))
 
-      dispatch("setMoviesWithoutDate", {
-        mutations: "SET_POPULAR_MOVIES",
+      dispatch('setMoviesWithoutDate', {
+        mutations: 'SET_POPULAR_MOVIES',
         movies: response.data,
-      });
+      })
 
-      onSuccess && onSuccess(response.data);
+      onSuccess && onSuccess(response.data)
     } catch (error) {
-      onFail && onFail(error);
+      onFail && onFail(error)
     }
   },
   async nowPlayingMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_NOW_PLAYING(page));
+      const response = await axios.get(API_ENDPOINT.GET_NOW_PLAYING(page))
 
-      dispatch("setMoviesWithDate", {
-        mutations: "SET_NOW_PLAYING_MOVIES",
+      dispatch('setMoviesWithDate', {
+        mutations: 'SET_NOW_PLAYING_MOVIES',
         movies: response.data,
-      });
+      })
 
-      onSuccess && onSuccess(response.data);
+      onSuccess && onSuccess(response.data)
     } catch (error) {
-      onFail && onFail(error);
+      onFail && onFail(error)
     }
   },
   async upcomingMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_UPCOMING(page));
+      const response = await axios.get(API_ENDPOINT.GET_UPCOMING(page))
 
-      dispatch("setMoviesWithDate", {
-        mutations: "SET_UPCOMING_MOVIES",
+      dispatch('setMoviesWithDate', {
+        mutations: 'SET_UPCOMING_MOVIES',
         movies: response.data,
-      });
+      })
 
-      onSuccess && onSuccess(response.data);
+      onSuccess && onSuccess(response.data)
     } catch (error) {
-      onFail && onFail(error);
+      onFail && onFail(error)
     }
   },
   async topRatedMovies({ dispatch }, { page, onSuccess, onFail }) {
     try {
-      const response = await axios.get(API_ENDPOINT.GET_TOP_RATED(page));
+      const response = await axios.get(API_ENDPOINT.GET_TOP_RATED(page))
 
-      dispatch("setMoviesWithoutDate", {
-        mutations: "SET_TOP_RATED_MOVIES",
+      dispatch('setMoviesWithoutDate', {
+        mutations: 'SET_TOP_RATED_MOVIES',
         movies: response.data,
-      });
+      })
 
-      onSuccess && onSuccess(response.data);
+      onSuccess && onSuccess(response.data)
     } catch (error) {
-      onFail && onFail(error);
+      onFail && onFail(error)
     }
   },
-};
+}

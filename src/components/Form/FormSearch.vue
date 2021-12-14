@@ -2,15 +2,16 @@
   <form class="d-flex justify-center" :class="inDrawer ? 'inDrawer' : ''" @submit.prevent="searchMovies">
     <v-theme-provider root>
       <v-text-field
+        v-model="movie"
         dense
         outlined
         clearable
-        v-model="movie"
         name="movie"
-        placeholder="Search Movie"
         type="search"
         hide-details="auto"
+        placeholder="Search Movie"
         prepend-inner-icon="mdi-magnify"
+        @keydown="handleKeydownSearchMovie"
         @keydown.enter.prevent="searchMovies"
       />
     </v-theme-provider>
@@ -18,39 +19,42 @@
 </template>
 <script>
 export default {
-  name: "FormSearch",
+  name: 'FormSearch',
   props: {
     inDrawer: Boolean,
     drawer: Boolean,
   },
   data() {
     return {
-      movie: "",
-    };
+      movie: '',
+    }
   },
   methods: {
-    async searchMovies() {
+    searchMovies() {
       if (!this.movie) {
-        return;
+        return
       }
-
-      await this.$store.dispatch("movies/searchMovies", this.movie);
 
       this.$router
         .push({
-          path: "/search",
+          path: '/search',
           query: {
             title: this.movie,
           },
         })
         .catch((error) => {
-          return error;
-        });
+          return error
+        })
 
-      this.$emit("toggleDrawer");
+      this.$emit('toggleDrawer')
+    },
+    handleKeydownSearchMovie() {
+      setTimeout(() => {
+        this.searchMovies()
+      }, 1000)
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 form {

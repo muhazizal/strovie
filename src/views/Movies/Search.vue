@@ -16,73 +16,76 @@
   </div>
 </template>
 <script>
-import { bottomVisible } from "@/utils/scroll.js";
+import { bottomVisible } from '@/utils/scroll.js'
 export default {
-  name: "Search",
+  name: 'Search',
   components: {
-    MovieList: () => import("@/components/Movie/MovieList"),
-    MovieFilters: () => import("@/components/Movie/MovieFilters"),
-    MovieListSkeleton: () => import("@/components/Movie/MovieListSkeleton"),
+    MovieList: () => import('@/components/Movie/MovieList'),
+    MovieFilters: () => import('@/components/Movie/MovieFilters'),
+    MovieListSkeleton: () => import('@/components/Movie/MovieListSkeleton'),
   },
   data() {
     return {
       page: 1,
       totalPages: 0,
       isBottomVisible: false,
-    };
+    }
   },
   computed: {
     loading() {
-      return this.$store.getters["getLoading"];
+      return this.$store.getters['getLoading']
     },
     movies() {
-      return this.$store.getters["movies/getSearchMovies"];
+      return this.$store.getters['movies/getSearchMovies']
     },
   },
   watch: {
     async isBottomVisible(isBottomVisible) {
       if (isBottomVisible && this.page < this.totalPages) {
-        this.page += 1;
-        await this.handleSearchMovies();
+        this.page += 1
+        await this.handleSearchMovies()
       }
+    },
+    async '$route.query.title'(title) {
+      await this.handleSearchMovies(title)
     },
   },
   async created() {
-    this.handleInfiniteScroll();
-    await this.handleSearchMovies();
+    this.handleInfiniteScroll()
+    await this.handleSearchMovies()
   },
   destroyed() {
-    this.$store.commit("SET_LOADING", true);
+    this.$store.commit('SET_LOADING', true)
   },
   methods: {
     handleInfiniteScroll() {
-      window.addEventListener("scroll", () => {
-        this.isBottomVisible = bottomVisible();
-      });
+      window.addEventListener('scroll', () => {
+        this.isBottomVisible = bottomVisible()
+      })
     },
-    async handleSearchMovies() {
-      const title = this.$route.query.title;
+    async handleSearchMovies(title) {
+      const query = title ? title : this.$route.query.title
       const params = {
-        query: title,
+        query,
         page: this.page,
         onSuccess: (data) => this.handleOnSuccessSearchMovies(data),
         onFail: (error) => this.handleOnFailSearchMovies(error),
-      };
+      }
 
       if (params.query) {
-        await this.$store.dispatch("movies/searchMovies", params);
+        await this.$store.dispatch('movies/searchMovies', params)
       }
     },
     async handleOnSuccessSearchMovies(data) {
-      this.totalPages = data.total_pages;
-      await this.$store.commit("SET_LOADING", false);
+      this.totalPages = data.total_pages
+      await this.$store.commit('SET_LOADING', false)
     },
     async handleOnFailSearchMovies(error) {
-      await this.$store.commit("SET_LOADING", false);
-      console.log(error);
+      await this.$store.commit('SET_LOADING', false)
+      console.log(error)
     },
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .search {
