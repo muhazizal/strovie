@@ -26,11 +26,11 @@
 </template>
 <script>
 export default {
-  name: "MoviePoster",
+  name: 'MoviePoster',
   props: {
     movieDetail: Object,
   },
-};
+}
 </script>
 <style lang="scss" scoped>
 .v-card {

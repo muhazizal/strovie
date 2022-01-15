@@ -10,12 +10,12 @@
 </template>
 <script>
 export default {
-  name: "MovieList",
+  name: 'MovieList',
   props: {
     movies: Object,
   },
   components: {
-    MovieListItem: () => import("./MovieListItem"),
+    MovieListItem: () => import('./MovieListItem'),
   },
-};
+}
 </script>
