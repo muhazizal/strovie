@@ -2,8 +2,8 @@
 	<v-footer padless>
 		<v-col class="text-center" cols="12">
 			<v-btn
-				v-for="link in links"
-				:key="link"
+				v-for="(link, index) in links"
+				:key="index"
 				icon
 				class="mx-4 mb-3"
 				@click="onClickIconLink(link.url)"
@@ -40,7 +40,7 @@ export default {
 	}),
 	methods: {
 		onClickIconLink(url) {
-			window.location.replace(url)
+			window.location.assign(url)
 		},
 	},
 }
